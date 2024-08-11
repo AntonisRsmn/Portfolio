@@ -176,13 +176,13 @@ button:hover {
 
     .sidebar li {
         width: 100%;
-        font-size: 20px;
+        font-size: 28px;
         padding-top: 10%;
     }
 
     .sidebar a {
         width: 100%;
-        font-size: 20px;
+        font-size: 28px;
     }
 
     .nav-icon {
@@ -195,7 +195,7 @@ button:hover {
     }
 
     .nav-links-r {
-        margin-right: auto;
+        margin-right: 0;
     }
 }
 
