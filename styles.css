@@ -106,7 +106,7 @@ button {
 
 header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: 15px;
     background-color: var(--clr-back-dark);
@@ -176,13 +176,14 @@ button:hover {
 
     .sidebar li {
         width: 100%;
-        font-size: 28px;
+        font-size: 24px;
         padding-top: 10%;
+        margin-left: -10%;
     }
 
     .sidebar a {
         width: 100%;
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .nav-icon {
@@ -195,7 +196,7 @@ button:hover {
     }
 
     .nav-links-r {
-        margin-right: 0;
+        margin-right: auto;
     }
 }
 
@@ -217,6 +218,19 @@ button:hover {
 
 .td button:hover {
     background-color: var(--clr-text);
+}
+
+.am {
+    color: var(--clr-text);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    padding: 5%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
 }
 
 /* Ryvex */
