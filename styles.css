@@ -128,6 +128,7 @@ header {
 .nav-links li a, .nav-links-r li a, .sidebar li a {
     transition: all 0.3S ease 0S;
     margin-left: 50px;
+    font-weight: bold;
 }
 
 .nav-links li a:hover, .nav-links-r li a:hover, .sidebar li a:hover {
@@ -222,17 +223,22 @@ button:hover {
 
 .am {
     color: var(--clr-text);
+    background-color: var(--clr-primary);
     justify-content: center;
     align-items: center;
     display: flex;
     font-size: 24px;
     padding: 5%;
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
     padding-bottom: 10%;
     font-weight: bold;
+}
+
+.am p {
+    width: 80%;
 }
 
 /* Ryvex */
