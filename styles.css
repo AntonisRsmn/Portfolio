@@ -157,6 +157,10 @@ button:hover {
     display: none;
 }
 
+.nav-links, .cta {
+    margin-right: 50px;
+}
+
 /* Responsive Sidebar */
 @media screen and (max-width: 754px) {
     .sidebar {
@@ -172,12 +176,11 @@ button:hover {
         align-items: flex-start;
         justify-content: flex-start;
         text-decoration: none;
-        padding: 10px;
     }
 
     .sidebar li {
         width: 100%;
-        font-size: 24px;
+        font-size: 26px;
         padding-top: 10%;
         margin-left: -10%;
     }
