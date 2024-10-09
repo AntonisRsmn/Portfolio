@@ -176,6 +176,8 @@ button:hover {
         align-items: flex-start;
         justify-content: flex-start;
         text-decoration: none;
+        font-family: "Rubik";
+        font-weight: 350;
     }
 
     .sidebar li {
@@ -213,6 +215,8 @@ button:hover {
     font-size: 22px;
     padding: 5%;
     flex-direction: column;
+    font-family: "Rubik";
+    font-weight: 350;
 }
 
 .td button {
@@ -238,10 +242,26 @@ button:hover {
     flex-direction: column;
     padding-bottom: 10%;
     font-weight: bold;
+    font-family: "Rubik";
+    font-weight: 350;
 }
 
 .am p {
     width: 80%;
+}
+
+.pro {
+    color: var(--clr-text);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 22px;
+    padding-top: 3%;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--clr-discord);
+    font-family: "Rubik";
+    font-weight: 350;
 }
 
 /* Ryvex */
@@ -253,6 +273,8 @@ button:hover {
     padding-top: 5%;
     padding-bottom: 5%;
     width: 100%;
+    font-family: "Rubik";
+    font-weight: 350;
 }
 
 .title {
@@ -433,8 +455,8 @@ form button {
     }
     .td h1 {
         font-size: 38px;
-        margin-top: 20%;
-        margin-bottom: 20%;
+        margin-top: 10%;
+        margin-bottom: 10%;
     }
 }
 
@@ -486,6 +508,12 @@ form button {
     }
 }
 
+@media screen and (max-width: 560px) {
+    .td h1 {
+        font-size: 32px;
+    }
+}
+
 @media screen and (max-width: 500px) {
     form {
         padding-top: 5%;
@@ -493,6 +521,10 @@ form button {
     }
 
     .td h1 {
+        font-size: 22px;
+    }
+
+    .pro h1 {
         font-size: 26px;
     }
 }
