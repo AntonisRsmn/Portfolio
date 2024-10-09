@@ -108,7 +108,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 15px 10%;
     background-color: var(--clr-back-dark);
 }
 
@@ -127,7 +127,6 @@ header {
 
 .nav-links li a, .nav-links-r li a, .sidebar li a {
     transition: all 0.3S ease 0S;
-    margin-left: 50px;
     font-weight: bold;
 }
 
@@ -471,7 +470,7 @@ form button {
 
     .nav-links-r a {
         font-weight: 800;
-        font-size: 26px;
+        font-size: 18px;
     }
 
     .title {
