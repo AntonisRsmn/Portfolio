@@ -268,7 +268,7 @@ button:hover {
     color: var(--clr-text);
     background-color: var(--clr-primary);
     display: inline-flex;
-    padding-left: 15%;
+    padding-left: 26%;
     padding-top: 5%;
     padding-bottom: 5%;
     width: 100%;
@@ -278,21 +278,21 @@ button:hover {
 
 .title {
     flex-direction: column;
-    padding-left: 10%;
-    width: 550px;
+    padding-left: 5%;
+    width: 100%;
     font-size: 18px;
     font-family: "Rubik";
     font-weight: 350;
 }
 
 .title h1 {
-    margin-bottom: 10%;
+    margin-bottom: 3%;
     font-size: 42px;
 }
 
 .title button {
-    margin-top: 10%;
-    margin-left: 10px;
+    margin-top: 3%;
+    margin-left: 0px;
     margin-right: 10px;
     background-color: var(--clr-primary);
 }
@@ -308,15 +308,13 @@ button:hover {
 }
 
 /* Footer */
-footer {
-    background-color: var(--clr-back-dark);
-    color: var(--clr-text);
-    text-align: center;
-    padding: 1%;
-    font-family: "Rubik";
-    position: absolute;
-    width: 100%;
-    bottom: 100;
+.footer {
+    background-color: var(--clr-background);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 0.5% 0% 0.5% 0%;
+    padding-bottom: 2%;
 }
   
 /* Contact Form */
