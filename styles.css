@@ -180,6 +180,14 @@ form h1 {
     margin-top: 5%;
 }
 
+@media screen and (max-width: 800px) {
+    .projects {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @media screen and (max-width: 500px) {
     form h1 {
         color: var(--clr-text);
