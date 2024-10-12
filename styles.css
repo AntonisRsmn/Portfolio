@@ -37,6 +37,9 @@ nav a {
 .hero {
     padding: 10% 0px;  
 }
+.hero button {
+    margin-top: 4%;
+}
 
 .hero h1 {
     font-size: 36px;
@@ -210,6 +213,10 @@ form h1 {
     form h1 {
         font-size: 32px;
     }
+
+    .hero button {
+        margin-top: 6%;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -233,6 +240,10 @@ form h1 {
 
     .hero h2 {
         font-size: 16px;
+    }
+
+    .hero button {
+        margin-top: 8%;
     }
 }
 
