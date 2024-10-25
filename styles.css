@@ -77,7 +77,26 @@ nav a {
     width: 250px;
     height: 400px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid;
+    border-radius: 10px;
+    animation: rainbowBorder 6s infinite;
 }
+
+@keyframes rainbowBorder {
+    0% { border-color: red; }
+    8.33% { border-color: orange; }
+    16.66% { border-color: yellow; }
+    25% { border-color: lime; }
+    33.33% { border-color: green; }
+    41.66% { border-color: cyan; }
+    50% { border-color: blue; }
+    58.33% { border-color: indigo; }
+    66.66% { border-color: violet; }
+    75% { border-color: pink; }
+    83.33% { border-color: magenta; }
+    91.66% { border-color: coral; }
+    100% { border-color: red; }
+  }
 
 .project-icon img {
     width: 150px;
@@ -105,8 +124,9 @@ button {
     padding: 9px 25px;
     background-color: var(--clr-background-light);
     color: var(--clr-text);
-    border: 3px solid var(--clr-text);
+    border: 2px solid;
     border-radius: 10px;
+    animation: rainbowBorder 6s infinite;
     cursor: pointer;
     transition: all 0.3S ease 0S;
 }
@@ -126,7 +146,7 @@ input {
     padding: 16px 16px;
     border: 2px solid;
     border-radius: 10px;
-    border-color: var(--clr-text);
+    animation: rainbowBorder 6s infinite;
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
@@ -142,7 +162,7 @@ textarea {
     padding: 16px 16px;
     border: 2px solid;
     border-radius: 10px;
-    border-color: var(--clr-text);
+    animation: rainbowBorder 6s infinite;
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
