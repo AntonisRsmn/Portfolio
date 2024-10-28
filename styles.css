@@ -62,12 +62,20 @@ nav a {
     background-color: var(--clr-background-dark);
 }
 
+.hero-back button {
+    background-color: var(--clr-background-dark);
+}
+
 .projects {
     display: flex;
     justify-content: center;
     gap: 40px;
     padding: 20px 0;
     gap: 100px;
+}
+
+.projects button {
+    background-color: var(--clr-cards);
 }
 
 .project {
@@ -79,24 +87,7 @@ nav a {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid;
     border-radius: 10px;
-    animation: rainbowBorder 6s infinite;
 }
-
-@keyframes rainbowBorder {
-    0% { border-color: red; }
-    8.33% { border-color: orange; }
-    16.66% { border-color: yellow; }
-    25% { border-color: lime; }
-    33.33% { border-color: green; }
-    41.66% { border-color: cyan; }
-    50% { border-color: blue; }
-    58.33% { border-color: indigo; }
-    66.66% { border-color: violet; }
-    75% { border-color: pink; }
-    83.33% { border-color: magenta; }
-    91.66% { border-color: coral; }
-    100% { border-color: red; }
-  }
 
 .project-icon img {
     width: 150px;
@@ -122,11 +113,10 @@ nav a {
 
 button {
     padding: 9px 25px;
-    background-color: var(--clr-background-light);
+    /* background-color: var(--clr-background-light); */
     color: var(--clr-text);
     border: 2px solid;
     border-radius: 10px;
-    animation: rainbowBorder 6s infinite;
     cursor: pointer;
     transition: all 0.3S ease 0S;
 }
@@ -146,7 +136,6 @@ input {
     padding: 16px 16px;
     border: 2px solid;
     border-radius: 10px;
-    animation: rainbowBorder 6s infinite;
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
@@ -162,7 +151,6 @@ textarea {
     padding: 16px 16px;
     border: 2px solid;
     border-radius: 10px;
-    animation: rainbowBorder 6s infinite;
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
@@ -268,7 +256,7 @@ form h1 {
 }
 
 form button {
-    background-color: var(--clr-background);
+    background-color: var(--clr-background-light);
     cursor: pointer;
     display: flex;
     margin-top: 3%;
