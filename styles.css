@@ -69,9 +69,10 @@ nav a {
 .projects {
     display: flex;
     justify-content: center;
-    gap: 40px;
     padding: 20px 0;
-    gap: 100px;
+    gap: 50px;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .projects button {
@@ -195,7 +196,7 @@ form h1 {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .projects {
         flex-direction: column;
         justify-content: center;
