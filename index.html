@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonis Rusman</title>
+    <title>Antonis Rusman - Web Developer & Designer</title>
+    <meta name="description" content="Portfolio of Antonis Rusman, a web developer and designer showcasing projects and contact information.">
+    <meta name="keywords" content="Antonis Rusman, web developer, web designer, portfolio, projects, contact">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- Hero Section -->
     <div class="hero-back">
-    <section class="hero">
+    <section id="hero" class="hero">
         <h1>Hello, I'm Antonis Rusman</h1>
         <h2>A Web Developer/Designer</h2>
-        <button onclick="window.open('resume.pdf','_blank')">Resume</button>
+        <button onclick="window.open('/Pdfs/resume.pdf','_blank')">Resume</button>
     </section>
     </div>
 
+    <!-- Projects Section -->
     <section class="hero2">
         <h2>My Projects</h2>
     </section>
 
-    <section class="projects">
+    <section id="projects" class="projects">
         <div class="project">
             <div class="project-icon">
-                <img src="ryvex-logo.png" alt="Ryvex Logo">
+                <img src="/Imgs/ryvex-logo.png" alt="Ryvex Logo">
             </div>
             <h3>Ryvex</h3>
             <p>Ryvex is a discord bot built to help you manage your discord server and also the members.</p>
@@ -32,7 +36,7 @@
         
         <div class="project">
             <div class="project-icon">
-                <img src="betl-logo.png" alt="Betl Logo">
+                <img src="/Imgs/betl-logo.png" alt="Betl Logo">
             </div>
             <h3>Betl</h3>
             <p>Betl provides innovative battery solutions focused on mobile and on-the-go charging.</p>
@@ -41,16 +45,17 @@
 
         <div class="project">
             <div class="project-icon">
-                <img src="https://img.freepik.com/premium-vector/eshop-logo-design-vector-template-online-shop-logo-concept_809852-666.jpg" alt="Betl Logo">
+                <img src="https://img.freepik.com/premium-vector/eshop-logo-design-vector-template-online-shop-logo-concept_809852-666.jpg" alt="E-Shop Logo">
             </div>
             <h3>E-SHop Template</h3>
-            <p>A simple E-Shop template for showcasing creativity and code </p>
+            <p>A simple and elegant E-Shop template for showcasing creativity and code</p>
             <button onclick=" window.open('https://antonisrsmn.github.io/Eshop/','_blank')">Website</button>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <div class="Contact-back">
-    <section>
+    <section id="contact">
     <form action="https://formspree.io/f/xvgorlbp" method="POST">
         <h1>Contact Form</h1>
         <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
@@ -62,9 +67,14 @@
     </form>
     </section>
 
+    <!-- Footer Section -->
     <footer class="footer">
-        <img src="Imgs/instagram-icon.png" onclick=" window.open('https://www.instagram.com/_.rusman._?igsh=MTU0aWprbWd5anY0eA%3D%3D&utm_source=qr','_blank')" height="50px">
-        <img src="Imgs/facebook-icon.png" onclick=" window.open('https://www.facebook.com/share/MizifUK8tP9L3nPT/?mibextid=LQQJ4d','_blank')" height="50px">
+        <div class="social-icons">
+            <img src="Imgs/instagram-icon.png" onclick=" window.open('https://www.instagram.com/_.rusman._?igsh=MTU0aWprbWd5anY0eA%3D%3D&utm_source=qr','_blank')" height="45px">
+            <img src="Imgs/facebook-icon.png" onclick=" window.open('https://www.facebook.com/share/MizifUK8tP9L3nPT/?mibextid=LQQJ4d','_blank')" height="45px">
+            <img src="Imgs/linked-in-icon.png" onclick=" window.open('https://gr.linkedin.com/in/antonis-rusman-a46424319','_blank')" height="40px" style="padding-bottom: 3.7px;">
+        </div>
+        <p>&copy; 2024 Antonis Rusman. All rights reserved.</p>
     </footer>
     </div>
 </body>

@@ -1,13 +1,14 @@
 :root {
-    --clr-text: #fffffe;
-    --clr-text-light: #D1D1D1;
-    --clr-text-light-2: #B1B1B1;
-    --clr-cards: #2C2D3F;
-    --clr-background-dark: #080913;
-    --clr-background: #0D0E1E;
-    --clr-background-light: #1C1D2F;
-    --clr-black: #000000;
-    --clr-text-blue: #0d0e1e;
+    --clr-text: #ffffff; /* White */
+    --clr-text-light: #f0f0f0; /* Light White */
+    --clr-text-light-2: #e0e0e0; /* Lighter White */
+    --clr-cards: #444444; /* Slightly lighter Dark Gray for better contrast */
+    --clr-background-dark: #000000; /* Very Dark Gray */
+    --clr-background: #111111; /* Black */
+    --clr-background-light: #222222; /* Dark Gray */
+    --clr-black: #000000; /* Black */
+    --clr-text-blue: #000000; /* Black */
+    --clr-header: #1a1a1a; /* Dark Gray */
 }
 
 * {
@@ -23,20 +24,12 @@ body {
     text-align: center;
 }
 
-header {
-    background-color: var(--clr-black);
-    padding: 10px 0;
-}
-
-nav a {
-    color: var(--clr-text);
-    text-decoration: none;
-    font-size: 18px;
-}
-
 .hero {
-    padding: 10% 0px;  
+    padding: 10% 0px;
+    background: url('path/to/your/background-image.jpg') no-repeat center center/cover;
+    color: var(--clr-header);
 }
+
 .hero button {
     margin-top: 4%;
 }
@@ -44,6 +37,7 @@ nav a {
 .hero h1 {
     font-size: 36px;
     margin-bottom: 10px;
+    color: var(--clr-text-light-2);
 }
 
 .hero h2 {
@@ -88,6 +82,12 @@ nav a {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid;
     border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-icon img {
@@ -106,20 +106,30 @@ nav a {
     font-size: 14px;
     color: var(--clr-text-light-2);
     margin-bottom: 30px;
-}   
+}
 
 .footer {
-    padding-bottom: 1%;
+    padding: 20px 0;
+    background-color: var(--clr-black);
+    color: var(--clr-text);
+    text-align: center;
+}
+
+.footer .social-icons {
+    margin-bottom: 10px;
+}
+
+.footer p {
+    margin: 0;
 }
 
 button {
     padding: 9px 25px;
-    /* background-color: var(--clr-background-light); */
     color: var(--clr-text);
     border: 2px solid;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3S ease 0S;
+    transition: all 0.3s ease 0s;
 }
 
 button:hover {
@@ -127,7 +137,6 @@ button:hover {
     background-color: var(--clr-text);
 }
 
-/* Contact Form */
 input {
     background-color: var(--clr-background-light);
     width: 50%;
@@ -140,10 +149,9 @@ input {
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
-    font-family: "Rubik";
+    font-family: Arial, sans-serif;
 }
 
-/* Text Area */
 textarea {
     background-color: var(--clr-background-light);
     width: 50%;
@@ -155,11 +163,10 @@ textarea {
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
-    font-family: "Rubik";
+    font-family: Arial, sans-serif;
     margin-bottom: 5%;
 }
 
-/* Input Hover */
 input:hover {
     background-color: var(--clr-text);
     color: var(--clr-black);
@@ -167,7 +174,6 @@ input:hover {
     cursor: pointer;
 }
 
-/* Text Area Hover */
 textarea:hover {
     background-color: var(--clr-text);
     color: var(--clr-black);
@@ -189,7 +195,6 @@ form h1 {
     padding-top: 4%;
 }
 
-/* Input / Text Area Main Screen */
 @media screen and (max-width: 1024px) {
     input, textarea {
         width: 80%;
@@ -264,5 +269,5 @@ form button {
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
-    font-family: "Rubik";
+    font-family: Arial, sans-serif;
 }
