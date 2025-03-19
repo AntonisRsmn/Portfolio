@@ -248,16 +248,45 @@ form h1 {
         margin-top: 7%;
     }
 
+    .hero {
+        padding: 30% 0px; /* Reduced padding */
+        margin-top: 0; /* Removed margin-top */
+        margin-bottom: 30px; /* Increased margin-bottom */
+    }
+
     .hero h1 {
-        font-size: 28px;
+        font-size: 28px; /* Adjusted font size */
     }
 
     .hero h2 {
-        font-size: 16px;
+        font-size: 16px; /* Adjusted font size */
     }
 
     .hero button {
-        margin-top: 8%;
+        margin-top: 8%; /* Adjusted margin-top */
+    }
+
+    .projects {
+        flex-direction: column;
+        gap: 30px; /* Increased gap between projects */
+    }
+
+    .project {
+        width: 250px; /* Reverted width */
+        height: 400px; /* Reverted height */
+        padding: 20px; /* Reverted padding */
+    }
+
+    .project-icon img {
+        width: 150px; /* Reverted image size */
+    }
+
+    .project h3 {
+        font-size: 20px; /* Reverted font size */
+    }
+
+    .project p {
+        font-size: 14px; /* Reverted font size */
     }
 }
 
