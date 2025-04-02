@@ -126,6 +126,14 @@ body {
     margin-bottom: 10px;
 }
 
+.footer .social-icons img {
+    transition: transform 0.3s ease;
+}
+
+.footer .social-icons img:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
 .footer p {
     margin: 0;
 }
