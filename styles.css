@@ -1,20 +1,24 @@
 :root {
-    --clr-text: #ffffff; /* White */
-    --clr-text-light: #f0f0f0; /* Light White */
-    --clr-text-light-2: #e0e0e0; /* Lighter White */
-    --clr-cards: #444444; /* Slightly lighter Dark Gray for better contrast */
-    --clr-background-dark: #000000; /* Very Dark Gray */
-    --clr-background: #111111; /* Black */
-    --clr-background-light: #222222; /* Dark Gray */
+    --clr-text: #000000; /* Black */
+    --clr-text-light: #333333; /* Dark Gray */
+    --clr-text-light-2: #666666; /* Lighter Gray */
+    --clr-cards: #ffffff; /* White */
+    --clr-background-dark: #f0f0f0; /* Light Gray */
+    --clr-background: #ffffff; /* White */
+    --clr-background-light: #e0e0e0; /* Very Light Gray */
     --clr-black: #000000; /* Black */
-    --clr-text-blue: #000000; /* Black */
-    --clr-header: #1a1a1a; /* Dark Gray */
+    --clr-text-blue: #0056b3; /* Blue */
+    --clr-header: #cccccc; /* Light Gray */
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -26,8 +30,10 @@ body {
 
 .hero {
     padding: 10% 0px;
-    background: url('path/to/your/background-image.jpg') no-repeat center center/cover;
-    color: var(--clr-header);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8)), 
+                url('Imgs/background.png') no-repeat center center/cover;
+    color: var(--clr-text);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hero button {
@@ -37,12 +43,12 @@ body {
 .hero h1 {
     font-size: 36px;
     margin-bottom: 10px;
-    color: var(--clr-text-light-2);
+    color: var(--clr-text-light);
 }
 
 .hero h2 {
     font-size: 24px;
-    color: var(--clr-text-light);
+    color: var(--clr-text-light-2);
 }
 
 .hero2 {
@@ -80,7 +86,7 @@ body {
     width: 250px;
     height: 400px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid;
+    border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -104,15 +110,16 @@ body {
 
 .project p {
     font-size: 14px;
-    color: var(--clr-text-light-2);
+    color: var(--clr-text-light);
     margin-bottom: 30px;
 }
 
 .footer {
     padding: 20px 0;
-    background-color: var(--clr-black);
+    background-color: var(--clr-background-dark);
     color: var(--clr-text);
     text-align: center;
+    box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .footer .social-icons {
@@ -126,15 +133,18 @@ body {
 button {
     padding: 9px 25px;
     color: var(--clr-text);
-    border: 2px solid;
+    background-color: var(--clr-background-light);
+    border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
 button:hover {
-    color: var(--clr-black);
-    background-color: var(--clr-text);
+    color: var(--clr-background);
+    background: linear-gradient(45deg, var(--clr-black), rgba(0, 0, 0, 0.8));
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 
 input {
@@ -144,7 +154,7 @@ input {
     margin-bottom: 20px;
     font-size: 18px;
     padding: 16px 16px;
-    border: 2px solid;
+    border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     color: var(--clr-text);
     display: flex;
@@ -158,7 +168,7 @@ textarea {
     margin: auto;
     font-size: 20px;
     padding: 16px 16px;
-    border: 2px solid;
+    border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     color: var(--clr-text);
     display: flex;
@@ -169,20 +179,27 @@ textarea {
 
 input:hover {
     background-color: var(--clr-text);
-    color: var(--clr-black);
+    color: var(--clr-background);
     transition-duration: 0.4s;
     cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 textarea:hover {
     background-color: var(--clr-text);
-    color: var(--clr-black);
+    color: var(--clr-background);
     transition-duration: 0.4s;
     cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .Contact-back {
-    background-color: var(--clr-background-light);
+    background: linear-gradient(to bottom, var(--clr-background-light), var(--clr-background-dark));
+    box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
 }
 
 form h1 {
