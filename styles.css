@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
     background-color: var(--clr-background);
     color: var(--clr-text);
     text-align: center;
+    overflow-x: hidden;
 }
 
 .hero {
