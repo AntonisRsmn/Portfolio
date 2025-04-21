@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Rubik, sans-serif;
     background-color: var(--clr-background);
     color: var(--clr-text);
     text-align: center;
@@ -63,7 +63,11 @@ body {
 }
 
 .hero-back button {
+    font-weight: 500;
     background-color: var(--clr-background-dark);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
 }
 
 .projects {
@@ -77,6 +81,9 @@ body {
 
 .projects button {
     background-color: var(--clr-cards);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
 }
 
 .project {
@@ -167,7 +174,7 @@ input {
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: Rubik, sans-serif;
 }
 
 textarea {
@@ -181,7 +188,7 @@ textarea {
     color: var(--clr-text);
     display: flex;
     font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: Rubik, sans-serif;
     margin-bottom: 5%;
 }
 
@@ -255,6 +262,7 @@ form h1 {
 
     .hero button {
         margin-top: 6%;
+        font-weight: 500;
     }
 }
 
@@ -323,5 +331,9 @@ form button {
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
-    font-family: Arial, sans-serif;
+    font-family: Rubik, sans-serif;
+    font-weight: 500;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
 }

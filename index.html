@@ -7,6 +7,9 @@
     <meta name="description" content="Portfolio of Antonis Rusman, a web developer and designer showcasing projects and contact information.">
     <meta name="keywords" content="Antonis Rusman, web developer, web designer, portfolio, projects, contact">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -25,7 +28,7 @@
     </section>
 
     <section id="projects" class="projects">
-        <div class="project">
+        <div data-aos="fade-right" data-aos-delay="0" data-aos-duration="800" class="project">
             <div class="project-icon">
                 <img src="/Imgs/ryvex-logo.png" alt="Ryvex Logo">
             </div>
@@ -34,7 +37,7 @@
             <button onclick=" window.open('https://ryvex.xyz','_blank')">Website</button>
         </div>
         
-        <div class="project">
+        <div data-aos="fade-right" data-aos-delay="100" data-aos-duration="800" class="project">
             <div class="project-icon">
                 <img src="/Imgs/betl-logo.png" alt="Betl Logo">
             </div>
@@ -43,7 +46,7 @@
             <button onclick=" window.open('https://antonisrsmn.github.io/Betl-Greece/','_blank')">Website</button>
         </div>
 
-        <div class="project">
+        <div data-aos="fade-left" data-aos-delay="0" data-aos-duration="800" class="project">
             <div class="project-icon">
                 <img src="Imgs/eshop-img.jpg" alt="E-Shop Logo">
             </div>
@@ -52,7 +55,7 @@
             <button onclick=" window.open('https://antonisrsmn.github.io/Eshop/','_blank')">Website</button>
         </div>
 
-        <div class="project">
+        <div data-aos="fade-left" data-aos-delay="100" data-aos-duration="800" class="project">
             <div class="project-icon">
                 <img src="Imgs/weather-app.png" alt="E-Shop Logo">
             </div>
@@ -66,13 +69,31 @@
     <div class="Contact-back">
     <section id="contact">
     <form action="https://formspree.io/f/xvgorlbp" method="POST">
-        <h1>Contact Form</h1>
-        <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
-        <input type="text" name="last" placeholder="Last Name" autocomplete="off" required>
-        <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
-        <textarea rows="5" cols="60" name="message" placeholder="Enter Text" autocomplete="off" required></textarea>
 
-        <button type="submit">Submit</button>
+        <div data-aos="fade-down">
+            <h1>Contact Form</h1>
+        </div>
+
+        <div data-aos="fade-right">
+            <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
+        </div>
+
+        <div data-aos="fade-left">
+            <input type="text" name="last" placeholder="Last Name" autocomplete="off" required>
+        </div>
+
+        <div data-aos="fade-right">
+            <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
+        </div>
+
+        <div data-aos="fade-left">
+            <textarea rows="5" cols="60" name="message" placeholder="Enter Text" autocomplete="off" required></textarea>
+        </div>
+
+        <div data-aos="fade-up">
+            <button type="submit">Submit</button>
+        </div>
+
     </form>
     </section>
 
@@ -86,5 +107,12 @@
         <p>&copy; 2024 Antonis Rusman. All rights reserved.</p>
     </footer>
     </div>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+
 </body>
 </html>
