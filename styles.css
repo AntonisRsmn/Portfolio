@@ -1,14 +1,20 @@
+/* ===============================
+   Root Variables (Global Colors)
+================================= */
 :root {
-    --clr-text: #000000; /* Black */
-    --clr-text-light: #333333; /* Dark Gray */
-    --clr-text-light-2: #666666; /* Lighter Gray */
-    --clr-cards: #ffffff; /* White */
-    --clr-background-dark: #f0f0f0; /* Light Gray */
-    --clr-background: #ffffff; /* White */
-    --clr-background-light: #e0e0e0; /* Very Light Gray */
-    --clr-black: #000000; /* Black */
+    --clr-text: #000000;               /* Black for main text */
+    --clr-text-light: #333333;         /* Dark gray for secondary text */
+    --clr-text-light-2: #666666;       /* Lighter gray for subtle text */
+    --clr-cards: #ffffff;              /* White for cards and containers */
+    --clr-background-dark: #f0f0f0;    /* Light gray for section backgrounds */
+    --clr-background: #ffffff;         /* White page background */
+    --clr-background-light: #e0e0e0;   /* Very light gray for inputs/buttons */
+    --clr-black: #000000;              /* Black for hover and accents */
 }
 
+/* ===============================
+   Global Reset and Base Styles
+================================= */
 * {
     margin: 0;
     padding: 0;
@@ -28,16 +34,15 @@ body {
     overflow-x: hidden;
 }
 
+/* ===============================
+   Hero Section
+================================= */
 .hero {
-    padding: 10% 0px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8)), 
+    padding: 10% 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8)),
                 url('Imgs/background.png') no-repeat center center/cover;
     color: var(--clr-text);
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hero button {
-    margin-top: 4%;
 }
 
 .hero h1 {
@@ -51,13 +56,11 @@ body {
     color: var(--clr-text-light-2);
 }
 
-.hero2 {
-    color: var(--clr-text);
-    padding-top: 4%;
-    padding-bottom: 4%;
-    font-size: 25px;
+.hero button {
+    margin-top: 4%;
 }
 
+/* Background for hero section container */
 .hero-back {
     background-color: var(--clr-background-dark);
 }
@@ -70,13 +73,22 @@ body {
     transform-style: preserve-3d;
 }
 
+/* ===============================
+   Projects Section
+================================= */
+.hero2 {
+    color: var(--clr-text);
+    padding: 4% 0;
+    font-size: 25px;
+}
+
+/* Project container layout */
 .projects {
     display: flex;
     justify-content: center;
     padding: 20px 0;
     gap: 50px;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin: 0 3%;
 }
 
 .projects button {
@@ -86,15 +98,15 @@ body {
     transform-style: preserve-3d;
 }
 
+/* Individual project card */
 .project {
     background-color: var(--clr-cards);
+    border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     padding: 20px;
     width: 250px;
     height: 400px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid var(--clr-text-light);
-    border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -106,8 +118,7 @@ body {
 .project-icon img {
     width: 150px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 .project h3 {
@@ -121,6 +132,9 @@ body {
     margin-bottom: 30px;
 }
 
+/* ===============================
+   Footer Section
+================================= */
 .footer {
     padding: 20px 0;
     background-color: var(--clr-background-dark);
@@ -145,6 +159,9 @@ body {
     margin: 0;
 }
 
+/* ===============================
+   Buttons
+================================= */
 button {
     padding: 9px 25px;
     color: var(--clr-text);
@@ -162,13 +179,17 @@ button:hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 
-input {
+/* ===============================
+   Form Inputs & Textarea
+================================= */
+input,
+textarea {
     background-color: var(--clr-background-light);
     width: 50%;
     margin: auto;
     margin-bottom: 20px;
     font-size: 18px;
-    padding: 16px 16px;
+    padding: 16px;
     border: 2px solid var(--clr-text-light);
     border-radius: 10px;
     color: var(--clr-text);
@@ -178,30 +199,11 @@ input {
 }
 
 textarea {
-    background-color: var(--clr-background-light);
-    width: 50%;
-    margin: auto;
     font-size: 20px;
-    padding: 16px 16px;
-    border: 2px solid var(--clr-text-light);
-    border-radius: 10px;
-    color: var(--clr-text);
-    display: flex;
-    font-weight: bold;
-    font-family: Rubik, sans-serif;
     margin-bottom: 5%;
 }
 
-input:hover {
-    background-color: var(--clr-text);
-    color: var(--clr-background);
-    transition-duration: 0.4s;
-    cursor: pointer;
-    transform: scale(1.02);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
+input:hover,
 textarea:hover {
     background-color: var(--clr-text);
     color: var(--clr-background);
@@ -212,21 +214,72 @@ textarea:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Contact section background */
 .Contact-back {
     background: linear-gradient(to bottom, var(--clr-background-light), var(--clr-background-dark));
     box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Contact form title */
 form h1 {
     color: var(--clr-text);
     text-align: center;
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin: 5% 0;
     padding-top: 4%;
 }
 
+form button {
+    background-color: var(--clr-background-light);
+    cursor: pointer;
+    display: flex;
+    margin: 3% auto 5% auto;
+    font-family: Rubik, sans-serif;
+    font-weight: 500;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
+}
+
+/* ===============================
+   Carousel
+================================= */
+.projects-carousel {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.carousel-projects {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.carousel-projects .project {
+    flex: 1 1 0;
+    min-width: 250px;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    padding: 24px 18px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.carousel-btns {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+/* ===============================
+   Media Queries (Responsiveness)
+================================= */
 @media screen and (max-width: 1024px) {
     input, textarea {
         width: 80%;
@@ -236,8 +289,11 @@ form h1 {
 @media screen and (max-width: 1000px) {
     .projects {
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+    }
+
+    .hero {
+        padding: 15% 0;
     }
 
     .hero h1 {
@@ -246,10 +302,6 @@ form h1 {
 
     .hero h2 {
         font-size: 20px;
-    }
-
-    .hero {
-        padding: 15% 0px;
     }
 
     .hero2 h2 {
@@ -266,14 +318,20 @@ form h1 {
     }
 }
 
+@media screen and (max-width: 600px) {
+    .carousel-projects {
+        gap: 0;
+    }
+
+    .project {
+        margin: 0 auto;
+    }
+}
+
 @media screen and (max-width: 500px) {
     form h1 {
-        color: var(--clr-text);
-        text-align: center;
         font-size: 26px;
-        font-weight: bold;
-        margin-bottom: 10%;
-        margin-top: 5%;
+        margin: 10% 0 5% 0;
         padding-top: 10%;
     }
 
@@ -282,100 +340,42 @@ form h1 {
     }
 
     .hero {
-        padding: 30% 0px; /* Reduced padding */
-        margin-top: 0; /* Removed margin-top */
-        margin-bottom: 30px; /* Increased margin-bottom */
+        padding: 30% 0;
+        margin-bottom: 30px;
     }
 
     .hero h1 {
-        font-size: 28px; /* Adjusted font size */
+        font-size: 28px;
     }
 
     .hero h2 {
-        font-size: 16px; /* Adjusted font size */
+        font-size: 16px;
     }
 
     .hero button {
-        margin-top: 8%; /* Adjusted margin-top */
+        margin-top: 8%;
     }
 
     .projects {
         flex-direction: column;
-        gap: 30px; /* Increased gap between projects */
+        gap: 30px;
     }
 
     .project {
-        width: 250px; /* Reverted width */
-        height: 400px; /* Reverted height */
-        padding: 20px; /* Reverted padding */
+        width: 250px;
+        height: 400px;
+        padding: 20px;
     }
 
     .project-icon img {
-        width: 150px; /* Reverted image size */
+        width: 150px;
     }
 
     .project h3 {
-        font-size: 20px; /* Reverted font size */
+        font-size: 20px;
     }
 
     .project p {
-        font-size: 14px; /* Reverted font size */
+        font-size: 14px;
     }
-}
-
-form button {
-    background-color: var(--clr-background-light);
-    cursor: pointer;
-    display: flex;
-    margin-top: 3%;
-    margin-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Rubik, sans-serif;
-    font-weight: 500;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    transform-style: preserve-3d;
-}
-
-/* Carousel styles for 3 visible projects */
-.projects-carousel {
-    position: relative;
-    max-width: 1100px;
-    margin: 0 auto 40px auto;
-    text-align: center;
-}
-
-.carousel-projects {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 30px;
-}
-
-@media (max-width: 600px) {
-    .carousel-projects {
-        gap: 0;
-    }
-    .project {
-        margin: 0 auto;
-    }
-}
-
-.carousel-projects .project {
-    flex: 1 1 0;
-    min-width: 250px;
-    max-width: 320px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    padding: 24px 18px;
-    transition: transform 0.4s, box-shadow 0.4s; /* <-- Add this line */
-}
-
-.carousel-btns {
-    padding-top: 5%;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
 }

@@ -1,177 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonis Rusman - Web Developer & Designer</title>
-    <meta name="description" content="Portfolio of Antonis Rusman, a web developer and designer showcasing projects and contact information.">
-    <meta name="keywords" content="Antonis Rusman, web developer, web designer, portfolio, projects, contact">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8"> <!-- Character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes website responsive -->
+    <title>Antonis Rusman - Web Developer & Designer</title> <!-- Page title for browser tab -->
+    <meta name="description" content="Portfolio of Antonis Rusman, a web developer and designer showcasing projects and contact information."> <!-- SEO description -->
+    <meta name="keywords" content="Antonis Rusman, web developer, web designer, portfolio, projects, contact"> <!-- SEO keywords -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- Animation library stylesheet -->
 </head>
 <body>
-
-    <!-- Hero Section -->
-    <div class="hero-back">
-    <section id="hero" class="hero">
-        <h1>Hello, I'm Antonis Rusman</h1>
-        <h2>A Web Developer/Designer</h2>
-        <div data-aos="zoom-in">
-            <button onclick="window.open('/Pdfs/resume.pdf','_blank')">Resume</button>
-        </div>
-
-    </section>
+    <!-- HERO SECTION -->
+    <div class="hero-back"> <!-- Wrapper for hero background -->
+        <section id="hero" class="hero">
+            <h1>Hello, I'm Antonis Rusman</h1> <!-- Main heading -->
+            <h2>A Web Developer/Designer</h2> <!-- Subheading -->
+            <div data-aos="zoom-in"> <!-- Animate resume button -->
+                <button onclick="window.open('/Pdfs/resume.pdf','_blank')">Resume</button> <!-- Button to open resume in new tab -->
+            </div>
+        </section>
     </div>
 
-    <!-- Projects Section -->
+    <!-- PROJECTS TITLE -->
     <section class="hero2" data-aos="fade-down" data-aos-duration="1000">
-        <h2>My Projects</h2>
+        <h2>My Projects</h2> <!-- Title for projects section -->
     </section>
 
+    <!-- PROJECTS CAROUSEL -->
     <section id="projects-carousel" class="projects-carousel">
-    <div class="carousel-projects" id="carouselProjects" data-aos="fade-down" data-aos-duration="1000">
-        <!-- Projects will be rendered here by JS -->
-    </div>
-    <div class="carousel-btns" data-aos="fade-up" data-aos-duration="1000">
-        <button id="prevProject">Prev</button>
-        <button id="nextProject">Next</button>
-    </div>
-</section>
-
-    <!-- Contact Section -->
-    <div class="Contact-back"></div>
-    <section id="contact">
-    <form action="https://formspree.io/f/xvgorlbp" method="POST">
-
-        <div data-aos="fade-down" data-aos-duration="1000">
-            <h1>Contact Form</h1>
+        <div class="carousel-projects" id="carouselProjects" data-aos="fade-down" data-aos-duration="1000"></div> <!-- Dynamic project cards will be inserted here -->
+        <div class="carousel-btns" data-aos="fade-up" data-aos-duration="1000">
+            <button id="prevProject">Prev</button> <!-- Previous project button -->
+            <button id="nextProject">Next</button> <!-- Next project button -->
         </div>
-
-        <div data-aos="fade-right" data-aos-duration="1000">
-            <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
-        </div>
-
-        <div data-aos="fade-left" data-aos-duration="1000">
-            <input type="text" name="last" placeholder="Last Name" autocomplete="off" required>
-        </div>
-
-        <div data-aos="fade-right" data-aos-duration="1000">
-            <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
-        </div>
-
-        <div data-aos="fade-left" data-aos-duration="1000">
-            <textarea rows="5" cols="60" name="message" placeholder="Enter Text" autocomplete="off" required></textarea>
-        </div>
-
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <button type="submit">Submit</button>
-        </div>
-
-    </form>
     </section>
 
-    <!-- Footer Section -->
+    <!-- CONTACT BACKGROUND -->
+    <div class="Contact-back"></div>
+
+    <!-- CONTACT FORM -->
+    <section id="contact">
+        <form action="https://formspree.io/f/xvgorlbp" method="POST"> <!-- Form submission via Formspree -->
+            <div data-aos="fade-down" data-aos-duration="1000">
+                <h1>Contact Form</h1> <!-- Contact form title -->
+            </div>
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <input type="text" name="first" placeholder="First Name" autocomplete="off" required> <!-- First name field -->
+            </div>
+            <div data-aos="fade-left" data-aos-duration="1000">
+                <input type="text" name="last" placeholder="Last Name" autocomplete="off" required> <!-- Last name field -->
+            </div>
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <input type="email" name="email" placeholder="Email Address" autocomplete="off" required> <!-- Email field -->
+            </div>
+            <div data-aos="fade-left" data-aos-duration="1000">
+                <textarea rows="5" cols="60" name="message" placeholder="Enter Text" autocomplete="off" required></textarea> <!-- Message textarea -->
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <button type="submit">Submit</button> <!-- Submit button -->
+            </div>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="social-icons">
-            <img src="Imgs/instagram-icon.png" onclick=" window.open('https://www.instagram.com/_.rusman._?igsh=MTU0aWprbWd5anY0eA%3D%3D&utm_source=qr','_blank')" height="45px">
-            <img src="Imgs/github-icon.png" onclick=" window.open('https://github.com/AntonisRsmn','_blank')" height="29px" style="margin-bottom: 8px;">
-            <img src="Imgs/linked-in-icon.png" onclick=" window.open('https://gr.linkedin.com/in/antonis-rusman-a46424319','_blank')" height="42px" style="padding-bottom: 3.7px;">
+            <!-- Social media icons with clickable links -->
+            <img src="Imgs/instagram-icon.png" onclick="window.open('https://www.instagram.com/_.rusman._?igsh=MTU0aWprbWd5anY0eA%3D%3D&utm_source=qr','_blank')" height="45px">
+            <img src="Imgs/github-icon.png" onclick="window.open('https://github.com/AntonisRsmn','_blank')" height="29px" style="margin-bottom: 8px;">
+            <img src="Imgs/linked-in-icon.png" onclick="window.open('https://gr.linkedin.com/in/antonis-rusman-a46424319','_blank')" height="42px" style="padding-bottom: 3.7px;">
         </div>
-        <p>&copy; 2025 Antonis Rusman. All rights reserved.</p>
+        <p>&copy; 2025 Antonis Rusman. All rights reserved.</p> <!-- Copyright text -->
     </footer>
-    </div>
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <!-- Animation library script -->
     <script>
-    AOS.init();
+        AOS.init(); // Initialize AOS animations
 
-    document.addEventListener('DOMContentLoaded', function() {
-        function getVisibleCount() {
-            return window.innerWidth <= 600 ? 1 : 3;
-        }
-
-        const allProjects = [
-            {
-                icon: "/Imgs/ryvex-logo.png",
-                title: "Ryvex",
-                desc: "Ryvex is a discord bot built to help you manage your discord server and also the members.",
-                link: "https://antonisrsmn.github.io/Ryvex-Website-New/"
-            },
-            {
-                icon: "Imgs/eshop-img.jpg",
-                title: "E-Shop Template",
-                desc: "Modern e-shop template with responsive design and clean code structure.",
-                link: "https://antonisrsmn.github.io/Eshop/"
-            },
-            {
-                icon: "Imgs/betl-logo.png",
-                title: "Betl",
-                desc: "Betl provides innovative battery solutions focused on mobile and on-the-go charging.",
-                link: "https://antonisrsmn.github.io/Betl-Greece/"
-            },
-            {
-                icon: "Imgs/weather-app.png",
-                title: "Weather App",
-                desc: "Live weather updates with clean design and accurate data integration.",
-                link: "https://antonisrsmn.github.io/WeatherApp/"
-            },
-            {
-                icon: "Imgs/Calculator.png",
-                title: "Calculator",
-                desc: "Minimalist calculator app built for precision, simplicity, and performance.",
-                link: "https://antonisrsmn.github.io/Calculator/"
-            },
-            {
-                icon: "Imgs/Unlike-Logo-Dark.png",
-                title: "Unlike",
-                desc: "Real-time global chat app for open, anonymous communication online.",
-                link: "https://unlike.gr"
-            },
-            {
-                icon: "https://stefaniadrakou.gr/Imgs/cv-photo.webp",
-                title: "Στεφανια Δρακου",
-                desc: "Ψυχολόγος – Ψυχοθεραπεύτρια.",
-                link: "https://stefaniadrakou.gr/"
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to determine how many projects to display based on screen size
+            function getVisibleCount() {
+                return window.innerWidth <= 600 ? 1 : 3;
             }
-        ];
 
-        let currentProject = 0;
-        const carousel = document.getElementById('carouselProjects');
+            // Array of project objects
+            const allProjects = [
+                { icon: "/Imgs/ryvex-logo.png", title: "Ryvex", desc: "Ryvex is a discord bot built to help you manage your discord server and also the members.", link: "https://antonisrsmn.github.io/Ryvex-Website-New/" },
+                { icon: "Imgs/eshop-img.jpg", title: "E-Shop Template", desc: "Modern e-shop template with responsive design and clean code structure.", link: "https://antonisrsmn.github.io/Eshop/" },
+                { icon: "Imgs/betl-logo.png", title: "Betl", desc: "Betl provides innovative battery solutions focused on mobile and on-the-go charging.", link: "https://antonisrsmn.github.io/Betl-Greece/" },
+                { icon: "Imgs/weather-app.png", title: "Weather App", desc: "Live weather updates with clean design and accurate data integration.", link: "https://antonisrsmn.github.io/WeatherApp/" },
+                { icon: "Imgs/Calculator.png", title: "Calculator", desc: "Minimalist calculator app built for precision, simplicity, and performance.", link: "https://antonisrsmn.github.io/Calculator/" },
+                { icon: "Imgs/Unlike-Logo-Dark.png", title: "Unlike", desc: "Real-time global chat app for open, anonymous communication online.", link: "https://unlike.gr" },
+                { icon: "https://stefaniadrakou.gr/Imgs/cv-photo.webp", title: "Στεφανια Δρακου", desc: "Ψυχολόγος – Ψυχοθεραπεύτρια.", link: "https://stefaniadrakou.gr/" }
+            ];
 
-        function renderProjects(startIndex) {
-            const visibleCount = getVisibleCount();
-            let html = '';
-            for (let i = 0; i < visibleCount; i++) {
-                const idx = (startIndex + i) % allProjects.length;
-                const p = allProjects[idx];
-                html += `
-                    <div class="project">
-                        <div class="project-icon">
-                            <img src="${p.icon}" alt="${p.title} Logo">
+            let currentProject = 0; // Index of the currently visible project
+            const carousel = document.getElementById('carouselProjects'); // Carousel container
+
+            // Function to render visible projects in the carousel
+            function renderProjects(startIndex) {
+                const visibleCount = getVisibleCount();
+                let html = '';
+                for (let i = 0; i < visibleCount; i++) {
+                    const idx = (startIndex + i) % allProjects.length;
+                    const p = allProjects[idx];
+                    html += `
+                        <div class="project">
+                            <div class="project-icon">
+                                <img src="${p.icon}" alt="${p.title} Logo">
+                            </div>
+                            <h3>${p.title}</h3>
+                            <p>${p.desc}</p>
+                            <button onclick="window.open('${p.link}','_blank')">Website</button>
                         </div>
-                        <h3>${p.title}</h3>
-                        <p>${p.desc}</p>
-                        <button onclick="window.open('${p.link}','_blank')">Website</button>
-                    </div>
-                `;
+                    `;
+                }
+                carousel.innerHTML = html;
             }
-            carousel.innerHTML = html;
-        }
 
-        document.getElementById('nextProject').onclick = function() {
-            currentProject = (currentProject + 1) % allProjects.length;
-            renderProjects(currentProject);
-        };
-        document.getElementById('prevProject').onclick = function() {
-            currentProject = (currentProject - 1 + allProjects.length) % allProjects.length;
-            renderProjects(currentProject);
-        };
+            // Event listeners for carousel navigation
+            document.getElementById('nextProject').onclick = function() {
+                currentProject = (currentProject + 1) % allProjects.length;
+                renderProjects(currentProject);
+            };
 
-        window.addEventListener('resize', () => renderProjects(currentProject));
-        renderProjects(currentProject);
-    });
+            document.getElementById('prevProject').onclick = function() {
+                currentProject = (currentProject - 1 + allProjects.length) % allProjects.length;
+                renderProjects(currentProject);
+            };
+
+            // Re-render projects on window resize
+            window.addEventListener('resize', () => renderProjects(currentProject));
+
+            renderProjects(currentProject); // Initial render
+        });
     </script>
-
 </body>
 </html>
