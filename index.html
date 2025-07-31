@@ -24,85 +24,22 @@
     </div>
 
     <!-- Projects Section -->
-    <section class="hero2">
+    <section class="hero2" data-aos="fade-down" data-aos-duration="1000">
         <h2>My Projects</h2>
     </section>
 
-    <section id="projects" class="projects">
-        <div data-aos="fade-down-right" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="/Imgs/ryvex-logo.png" alt="Ryvex Logo">
-            </div>
-            <h3>Ryvex</h3>
-            <p>Ryvex is a discord bot built to help you manage your discord server and also the members.</p>
-            <button onclick=" window.open('https://ryvex.xyz','_blank')">Website</button>
-        </div>
-        
-
-        <div data-aos="fade-down-left" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="Imgs/eshop-img.jpg" alt="E-Shop Logo">
-            </div>
-            <h3>E-Shop Template</h3>
-            <p>Modern e-shop template with responsive design and clean code structure.</p>
-            <button onclick=" window.open('https://antonisrsmn.github.io/Eshop/','_blank')">Website</button>
-        </div>
-    </section>
-    <section id="projects" class="projects">
-        <div data-aos="fade-up-right" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="Imgs/weather-app.png" alt="E-Shop Logo">
-            </div>
-            <h3>Weather App</h3>
-            <p>Live weather updates with clean design and accurate data integration.</p>
-            <button onclick=" window.open('https://antonisrsmn.github.io/WeatherApp/','_blank')">Website</button>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="Imgs/Calculator.png" alt="E-Shop Logo">
-            </div>
-            <h3>Calculator</h3>
-            <p>Minimalist calculator app built for precision, simplicity, and performance.</p>
-            <button onclick=" window.open('https://antonisrsmn.github.io/Calculator/','_blank')">Website</button>
-        </div>
-
-        <div data-aos="fade-up-left" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="Imgs/Unlike-Logo-Dark.png" alt="E-Shop Logo">
-            </div>
-            <h3>Unlike</h3>
-            <p>Real-time global chat app for open, anonymous communication online.</p>
-            <button onclick=" window.open('https://unlike.gr','_blank')">Website</button>
-        </div>
-    </section>
-
-    <section class="hero2">
-        <h2>My Clients</h2>
-    </section>
-
-    <section id="projects" class="projects">
-        <div data-aos="fade-down-right" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="/Imgs/betl-logo.png" alt="Betl Logo">
-            </div>
-            <h3>Betl</h3>
-            <p>Betl provides innovative battery solutions focused on mobile and on-the-go charging.</p>
-            <button onclick=" window.open('https://antonisrsmn.github.io/Betl-Greece/','_blank')">Website</button>
-        </div>
-
-        <div data-aos="fade-down-left" data-aos-delay="0" data-aos-duration="1000" class="project">
-            <div class="project-icon">
-                <img src="https://stefaniadrakou.gr/Imgs/cv-photo.webp" alt="Logo">
-            </div>
-            <h3>Στεφανια Δρακου</h3>
-            <p>Ψυχολόγος – Ψυχοθεραπεύτρια.</p>
-            <button onclick=" window.open('https://stefaniadrakou.gr/','_blank')">Website</button>
-        </div>
-    </section>
+    <section id="projects-carousel" class="projects-carousel">
+    <div class="carousel-projects" id="carouselProjects" data-aos="fade-down" data-aos-duration="1000">
+        <!-- Projects will be rendered here by JS -->
+    </div>
+    <div class="carousel-btns" data-aos="fade-up" data-aos-duration="1000">
+        <button id="prevProject">Prev</button>
+        <button id="nextProject">Next</button>
+    </div>
+</section>
 
     <!-- Contact Section -->
-    <div class="Contact-back">
+    <div class="Contact-back"></div>
     <section id="contact">
     <form action="https://formspree.io/f/xvgorlbp" method="POST">
 
@@ -148,6 +85,92 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     AOS.init();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function getVisibleCount() {
+            return window.innerWidth <= 600 ? 1 : 3;
+        }
+
+        const allProjects = [
+            {
+                icon: "/Imgs/ryvex-logo.png",
+                title: "Ryvex",
+                desc: "Ryvex is a discord bot built to help you manage your discord server and also the members.",
+                link: "https://ryvex.xyz"
+            },
+            {
+                icon: "Imgs/eshop-img.jpg",
+                title: "E-Shop Template",
+                desc: "Modern e-shop template with responsive design and clean code structure.",
+                link: "https://antonisrsmn.github.io/Eshop/"
+            },
+            {
+                icon: "Imgs/weather-app.png",
+                title: "Weather App",
+                desc: "Live weather updates with clean design and accurate data integration.",
+                link: "https://antonisrsmn.github.io/WeatherApp/"
+            },
+            {
+                icon: "Imgs/Calculator.png",
+                title: "Calculator",
+                desc: "Minimalist calculator app built for precision, simplicity, and performance.",
+                link: "https://antonisrsmn.github.io/Calculator/"
+            },
+            {
+                icon: "Imgs/Unlike-Logo-Dark.png",
+                title: "Unlike",
+                desc: "Real-time global chat app for open, anonymous communication online.",
+                link: "https://unlike.gr"
+            },
+            {
+                icon: "Imgs/betl-logo.png",
+                title: "Betl",
+                desc: "Betl provides innovative battery solutions focused on mobile and on-the-go charging.",
+                link: "https://unlike.gr"
+            },
+            {
+                icon: "https://stefaniadrakou.gr/Imgs/cv-photo.webp",
+                title: "Στεφανια Δρακου",
+                desc: "Ψυχολόγος – Ψυχοθεραπεύτρια.",
+                link: "https://stefaniadrakou.gr/"
+            }
+        ];
+
+        let currentProject = 0;
+        const carousel = document.getElementById('carouselProjects');
+
+        function renderProjects(startIndex) {
+            const visibleCount = getVisibleCount();
+            let html = '';
+            for (let i = 0; i < visibleCount; i++) {
+                const idx = (startIndex + i) % allProjects.length;
+                const p = allProjects[idx];
+                html += `
+                    <div class="project">
+                        <div class="project-icon">
+                            <img src="${p.icon}" alt="${p.title} Logo">
+                        </div>
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <button onclick="window.open('${p.link}','_blank')">Website</button>
+                    </div>
+                `;
+            }
+            carousel.innerHTML = html;
+        }
+
+        document.getElementById('nextProject').onclick = function() {
+            currentProject = (currentProject + 1) % allProjects.length;
+            renderProjects(currentProject);
+        };
+        document.getElementById('prevProject').onclick = function() {
+            currentProject = (currentProject - 1 + allProjects.length) % allProjects.length;
+            renderProjects(currentProject);
+        };
+
+        window.addEventListener('resize', () => renderProjects(currentProject));
+        renderProjects(currentProject);
+    });
     </script>
 
 </body>
