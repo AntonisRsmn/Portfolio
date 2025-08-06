@@ -23,65 +23,59 @@ Browse projects via the portfolio carousel on the site—navigate seamlessly bet
 
 ✨ Technologies Used
 
-    HTML5 & CSS3 — semantic markup and styling
+- HTML5 & CSS3 — semantic markup and styling
 
-    JavaScript — for interactivity and form submissions
+- JavaScript — for interactivity and form submissions
 
-    Responsive design — adaptable across devices
+- Responsive design — adaptable across devices
 
-    Lightweight, static hosting — ideal for fast loading without backend overhead
+- Lightweight, static hosting — ideal for fast loading without backend overhead
 
 📥 Usage & Customization
 
 This portfolio is primarily for showcasing your skills and projects. You can:
 
-    Add new projects by adding pages and updating the portfolio carousel
+- Add new projects by adding pages and updating the portfolio carousel
 
-    Update designs or images in the assets folders
+- Update designs or images in the assets folders
 
-    Improve contact flow by integrating real form endpoints or analytics
+- Improve contact flow by integrating real form endpoints or analytics
 
-    Enhance interactivity using frameworks like React, Vue, or animations
+- Enhance interactivity using frameworks like React, Vue, or animations
 
 📣Why This Site Works
 
-    Clean, intuitive navigation and visual hierarchy
+ - Clean, intuitive navigation and visual hierarchy
 
-    Minimalist style highlights projects without distraction
+- Minimalist style highlights projects without distraction
 
-    Fully static deployment enables fast performance and easy hosting
+- Fully static deployment enables fast performance and easy hosting
 
 🚀 Deployment Options
 
 Host the site using:
 
-    GitHub Pages
-
-    Netlify, Vercel
-
-    Any static site host or shared web space
-
-    It can also serve as a template bootstrap for future site builds
+ - GitHub Pages
 
 📄 License
 
 Feel free to reuse or adapt this site. License choice (e.g. MIT, CC-BY) depends on intended sharing preferences.
 📞 Contact & Connect
 
-    Visit rusman.gr to explore or reach out
+ - Visit rusman.gr to explore or reach out
 
-    Connect via provided contact form
+- Connect via provided contact form
 
-    Keep in touch for collaboration, freelance inquiries, or design work
+- Keep in touch for collaboration, freelance inquiries, or design work
 
 🚧 Future Enhancements
 
-    Add CMS integration for dynamic content
+ - Add CMS integration for dynamic content
 
-    Include project code snippets or GitHub links
+- Include project code snippets or GitHub links
 
-    Add multi-language support and dark mode
+- Add multi-language support and dark mode
 
-    Integrate performance optimization and SEO best practices
+- Integrate performance optimization and SEO best practices
 
 Thank you for visiting my digital portfolio! Looking forward to collaborating or creating something new together. ✨
