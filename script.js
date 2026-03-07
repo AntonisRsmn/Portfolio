@@ -2,12 +2,22 @@
 const obs = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("show");
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        obs.unobserve(e.target);
+      }
     });
   },
   { threshold: 0.08 }
 );
-document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+document.querySelectorAll(".reveal").forEach((el) => {
+  const delay = Number(el.dataset.revealDelay || el.dataset.aosDelay || 0);
+  if (delay > 0) {
+    // Keep scroll animation snappy while still allowing a staggered sequence.
+    el.style.transitionDelay = `${Math.min(delay, 450)}ms`;
+  }
+  obs.observe(el);
+});
 
 // Dynamic year
 const yearEl = document.getElementById("year");
@@ -20,6 +30,15 @@ if (navToggle && navToggleLabel) {
   navToggleLabel.setAttribute("aria-expanded", "false");
   navToggle.addEventListener("change", () => {
     navToggleLabel.setAttribute("aria-expanded", navToggle.checked ? "true" : "false");
+  });
+
+  document.querySelectorAll(".navlinks a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 768 && navToggle.checked) {
+        navToggle.checked = false;
+        navToggleLabel.setAttribute("aria-expanded", "false");
+      }
+    });
   });
 }
 
@@ -266,50 +285,135 @@ if (cv) {
     },
   ];
 
-  let currentProject = 0;
   const carousel = document.getElementById("carouselProjects");
+  const carouselSection = document.getElementById("projects-carousel");
+  const AUTOPLAY_MS = 3000;
+  const TRANSITION_MS = 520;
+  let autoplayTimer = null;
+  let isAnimating = false;
+  let currentIndex = allProjects.length; // Start in the middle clone block for seamless looping.
 
-  function renderProjects(startIndex) {
-    if (!carousel) return;
-    const visibleCount = getVisibleCount();
-    let html = "";
-    for (let i = 0; i < visibleCount; i++) {
-      const idx = (startIndex + i) % allProjects.length;
-      const p = allProjects[idx];
-      html += `
-        <div class="project">
-          <div class="project-icon">
-            <img src="${p.icon}" alt="${p.title} Logo" loading="lazy">
-          </div>
-          <h3>${p.title}</h3>
-          <p>${p.desc}</p>
-          <a class="btn primary" href="${p.link}" target="_blank" rel="noopener">Website</a>
+  function projectCardMarkup(project) {
+    return `
+      <div class="project" aria-hidden="true">
+        <div class="project-icon">
+          <img src="${project.icon}" alt="${project.title} Logo" loading="lazy">
         </div>
-      `;
+        <h3>${project.title}</h3>
+        <p>${project.desc}</p>
+        <a class="btn primary" href="${project.link}" target="_blank" rel="noopener">Website</a>
+      </div>
+    `;
+  }
+
+  function setVisibleCount() {
+    if (!carousel) return;
+    carousel.style.setProperty("--visible-count", String(getVisibleCount()));
+  }
+
+  function getStepSize() {
+    if (!carousel) return 0;
+    const firstCard = carousel.querySelector(".project");
+    if (!firstCard) return 0;
+    const styles = window.getComputedStyle(carousel);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function applyOffset(animated = true) {
+    if (!carousel) return;
+    const step = getStepSize();
+    if (!step) return;
+    carousel.classList.toggle("no-transition", !animated);
+    carousel.style.transform = `translateX(${-currentIndex * step}px)`;
+    if (!animated) {
+      // Force the browser to apply the no-transition state before restoring transitions.
+      carousel.getBoundingClientRect();
+      carousel.classList.remove("no-transition");
     }
-    carousel.innerHTML = html;
+  }
+
+  function buildCarouselTrack() {
+    if (!carousel) return;
+    const loopedProjects = [...allProjects, ...allProjects, ...allProjects];
+    carousel.innerHTML = loopedProjects.map(projectCardMarkup).join("");
+    setVisibleCount();
+    applyOffset(false);
+  }
+
+  function move(direction) {
+    if (!carousel || isAnimating) return;
+    isAnimating = true;
+    currentIndex += direction;
+    applyOffset(true);
+  }
+
+  function goNext() {
+    move(1);
+  }
+
+  function goPrev() {
+    move(-1);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(goNext, AUTOPLAY_MS);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.getElementById("nextProject");
     const prevBtn = document.getElementById("prevProject");
 
+    if (carousel) {
+      carousel.addEventListener("transitionend", (event) => {
+        if (event.propertyName !== "transform") return;
+
+        const blockSize = allProjects.length;
+        if (currentIndex >= blockSize * 2) {
+          currentIndex -= blockSize;
+          applyOffset(false);
+        } else if (currentIndex < blockSize) {
+          currentIndex += blockSize;
+          applyOffset(false);
+        }
+        isAnimating = false;
+      });
+    }
+
     if (nextBtn) {
       nextBtn.onclick = function () {
-        currentProject = (currentProject + 1) % allProjects.length;
-        renderProjects(currentProject);
+        goNext();
+        startAutoplay();
       };
     }
 
     if (prevBtn) {
       prevBtn.onclick = function () {
-        currentProject = (currentProject - 1 + allProjects.length) % allProjects.length;
-        renderProjects(currentProject);
+        goPrev();
+        startAutoplay();
       };
     }
 
-    window.addEventListener("resize", () => renderProjects(currentProject));
-    renderProjects(currentProject);
+    if (carouselSection) {
+      carouselSection.addEventListener("mouseenter", stopAutoplay);
+      carouselSection.addEventListener("mouseleave", startAutoplay);
+    }
+
+    window.addEventListener("resize", () => {
+      setVisibleCount();
+      applyOffset(false);
+    });
+
+    buildCarouselTrack();
+    startAutoplay();
   });
 
   // Preload project images

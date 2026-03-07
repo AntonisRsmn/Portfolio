@@ -94,6 +94,8 @@
 
         <!-- Primary navigation links -->
         <nav class="navlinks">
+          <label for="nav-toggle" class="nav-close" aria-label="Close menu">&times;</label>
+
           <a href="#projects">Projects</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
@@ -140,6 +142,8 @@
             </label>
           </div>
         </nav>
+
+        <label for="nav-toggle" class="nav-overlay" aria-hidden="true"></label>
       </div>
     </header>
 
@@ -150,15 +154,15 @@
         <div class="hero-grid">
           <!-- Intro / headline -->
           <div class="intro" data-aos="fade-up">
-            <h1 class="reveal" data-aos="fade-up" data-aos-delay="100">
+            <h1 class="reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="100">
               <span id="hero-title" class="name">Antonios Rusman</span><span class="title-subtitle"> — Web Developer / Designer</span>
             </h1>
-            <p class="lead reveal" data-aos="fade-up" data-aos-delay="200">
+            <p class="lead reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="200">
               I build fast, modern websites that help businesses grow online.
             </p>
 
             <!-- Roles / quick skills -->
-            <div style="margin-top: 22px" class="reveal" id="roles">
+            <div style="margin-top: 22px" class="reveal" data-reveal="left" id="roles">
               <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
                 <div class="role">Front-End / Back-End Development</div>
                 <div class="role">UI / UX Design</div>
@@ -167,13 +171,13 @@
             </div>
 
             <!-- Call to action -->
-            <div class="cta reveal" data-aos="fade-up" data-aos-delay="300">
+            <div class="cta reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="300">
               <a class="btn primary" href="#contact">Hire me</a>
               <a class="btn" href="#projects">See projects</a>
             </div>
 
             <!-- Social links -->
-            <div style="margin-top: 26px" class="reveal connect" data-aos="fade-up" data-aos-delay="400">
+            <div style="margin-top: 26px" class="reveal connect" data-reveal="right" data-aos="fade-up" data-aos-delay="400">
               <span class="muted">Connect —</span>
               <a href="https://github.com/AntonisRsmn" target="_blank" rel="noopener">GitHub</a>
               ·
@@ -186,7 +190,7 @@
           </div>
 
           <!-- Side card (availability + skills) -->
-          <aside class="side-card reveal">
+          <aside class="side-card reveal" data-reveal="zoom" data-reveal-delay="120">
             <div style="display: flex; align-items: center; gap: 12px">
               <div style="flex: 1">
                 <div style="font-weight: 800">Available for freelance</div>
@@ -225,17 +229,18 @@
 
       <!-- PROJECTS CAROUSEL -->
       <section id="projects">
-        <h2 class="section-title reveal">Selected projects</h2>
+        <h2 class="section-title reveal" data-reveal="left">Selected projects</h2>
 
         <!-- Carousel container:
              - carousel-projects (id=carouselProjects) will be populated dynamically via JS
              - prev/next buttons navigate through projects -->
         <section id="projects-carousel" class="projects-carousel">
-          <div
-            class="carousel-projects"
-            id="carouselProjects"
-            aria-live="polite"
-          ></div>
+          <div class="carousel-viewport" aria-live="polite">
+            <div
+              class="carousel-projects"
+              id="carouselProjects"
+            ></div>
+          </div>
 
           <button
             class="carousel-btn"
@@ -283,27 +288,28 @@
 
       <!-- ABOUT -->
       <section id="about">
-        <h2 class="section-title reveal">About</h2>
+        <h2 class="section-title reveal" data-reveal="left">About</h2>
         <div class="about-grid">
           <div>
-            <p class="reveal muted">
+            <p class="reveal muted" data-reveal="up">
               Hi — I’m Antonis. I focus on building accessible, fast, and
               modern websites for small businesses and creatives. I like clean
               interfaces, well-structured code, and products that solve real
               problems.
             </p>
 
-            <h3 class="reveal" style="margin-top: 18px">What I do</h3>
-            <ul class="reveal muted">
+            <h3 class="reveal" data-reveal="left" style="margin-top: 18px">What I do</h3>
+            <ul class="reveal muted" data-reveal="up">
               <li>Custom responsive websites</li>
               <li>E-commerce solutions</li>
               <li>Performance & SEO optimizations</li>
               <li>Design-to-code workflows</li>
             </ul>
 
-            <h3 class="reveal" style="margin-top: 18px">Tools</h3>
+            <h3 class="reveal" data-reveal="left" style="margin-top: 18px">Tools</h3>
             <div
               class="reveal"
+              data-reveal="right"
               style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px"
             >
               <span class="role">VS Code</span>
@@ -315,11 +321,11 @@
           </div>
 
           <aside>
-            <div class="me-photo reveal">
+            <div class="me-photo reveal" data-reveal="zoom">
               <img src="Imgs/Rusman.webp" alt="A photo of me" loading="lazy" />
             </div>
 
-            <div style="margin-top: 14px" class="contact-card reveal">
+            <div style="margin-top: 14px" class="contact-card reveal" data-reveal="right">
               <div style="font-weight: 800">Let’s work together</div>
               <div class="muted" style="margin-top: 8px">
                 Send a short message and I’ll respond within 24–48 hours.
@@ -334,7 +340,7 @@
 
       <!-- CONTACT -->
       <section id="contact">
-        <h2 class="section-title reveal">Contact</h2>
+        <h2 class="section-title reveal" data-reveal="left">Contact</h2>
         <div style="display: grid; grid-template-columns: 1fr 360px; gap: 20px">
           <div>
             <!-- Contact form (Formspree) -->
@@ -355,7 +361,7 @@
             </form>
           </div>
 
-          <aside class="contact-card reveal">
+          <aside class="contact-card reveal" data-reveal="right">
             <div style="font-weight: 800">Contact info</div>
             <div class="muted" style="margin-top: 8px">
               Email: <a href="mailto:info@rusman.gr">info@rusman.gr</a>
