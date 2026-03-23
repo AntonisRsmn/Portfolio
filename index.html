@@ -9,14 +9,15 @@
     <link rel="dns-prefetch" href="https://formspree.io" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     
-    <title>Antonios Rusman | Web Developer & Designer — Athens, Greece</title>
+    <title>Antonios Rusman | Freelance Web Developer in Athens, Greece</title>
     <meta
       name="description"
-      content="I build fast, modern websites that help businesses grow online."
+      content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups."
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="Imgs/Rusman.webp" />
+    <link rel="icon" href="Imgs/favicon.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="Imgs/favicon.svg" type="image/svg+xml" />
 
     <!-- Fonts (Inter) - Preconnect before stylesheet for optimal loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,43 +30,72 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- AOS (Animate On Scroll) Library -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2/dist/aos.css" />
-
     <!-- Open Graph / Social metadata -->
     <meta
       property="og:title"
-      content="Antonios Rusman — Web Developer/Designer"
+      content="Antonios Rusman - Freelance Web Developer in Athens"
     />
     <meta
       property="og:description"
-      content="I build fast, modern websites that help businesses grow online."
+      content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups."
     />
-    <meta property="og:image" content="https://rusman.gr/Imgs/og-preview.jpg" />
+    <meta property="og:site_name" content="rusman.gr" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png" />
+    <meta property="og:image:secure_url" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Antonios Rusman - Web Developer and Designer" />
     <meta property="og:url" content="https://rusman.gr/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Antonios Rusman - Freelance Web Developer in Athens" />
+    <meta name="twitter:description" content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups." />
+    <meta name="twitter:image" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png" />
+    <meta name="twitter:image:alt" content="Antonios Rusman - Web Developer and Designer" />
 
     <link rel="canonical" href="https://rusman.gr/" />
     <meta name="theme-color" content="#0d0d0d" />
 
-    <!-- Structured data (Person schema) -->
+    <!-- Structured data (Person + ProfessionalService schema) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Antonios Rusman",
-        "url": "https://rusman.gr",
-        "sameAs": [
-          "https://github.com/AntonisRsmn",
-          "https://www.linkedin.com/in/antonis-rusman-a46424319/",
-          "https://instagram.com/_.rusman._"
-        ],
-        "jobTitle": "Web Developer",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Athens",
-          "addressCountry": "Greece"
-        }
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Antonios Rusman",
+            "url": "https://rusman.gr",
+            "sameAs": [
+              "https://github.com/AntonisRsmn",
+              "https://www.linkedin.com/in/antonis-rusman-a46424319/",
+              "https://instagram.com/_.rusman._"
+            ],
+            "jobTitle": "Web Developer",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Athens",
+              "addressCountry": "Greece"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "name": "Antonios Rusman Web Development",
+            "url": "https://rusman.gr",
+            "image": "https://rusman.gr/Imgs/social/og-banner-1200x630.png",
+            "areaServed": ["Athens", "Greece", "Remote"],
+            "serviceType": [
+              "Website Development",
+              "UI/UX Design",
+              "E-commerce Website Development",
+              "Website Performance Optimization"
+            ],
+            "sameAs": [
+              "https://github.com/AntonisRsmn",
+              "https://www.linkedin.com/in/antonis-rusman-a46424319/"
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -76,8 +106,8 @@
       <div class="container nav">
         <!-- Header brand link: subpath‑safe -->
         <div class="brand">
-          <a href="./" style="color: inherit; text-decoration: none">
-            Antonios <span style="color: var(--accent)">Rusman</span>
+          <a href="./" class="brand-link">
+            Antonios <span class="accent-text">Rusman</span>
           </a>
         </div>
 
@@ -153,17 +183,17 @@
       <section class="hero">
         <div class="hero-grid">
           <!-- Intro / headline -->
-          <div class="intro" data-aos="fade-up">
-            <h1 class="reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="100">
-              <span id="hero-title" class="name">Antonios Rusman</span><span class="title-subtitle"> — Web Developer / Designer</span>
+          <div class="intro">
+            <h1 class="reveal" data-reveal="up">
+              <span id="hero-title" class="name">Websites that turn visitors into leads</span><span class="title-subtitle"> — Freelance Web Developer in Athens</span>
             </h1>
-            <p class="lead reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="200">
-              I build fast, modern websites that help businesses grow online.
+            <p class="lead reveal" data-reveal="up">
+              I help small businesses in Athens and across Greece launch fast, SEO-friendly websites designed to increase inquiries and sales.
             </p>
 
             <!-- Roles / quick skills -->
-            <div style="margin-top: 22px" class="reveal" data-reveal="left" id="roles">
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+            <div class="reveal role-group" data-reveal="left" id="roles">
+              <div class="role-list">
                 <div class="role">Front-End / Back-End Development</div>
                 <div class="role">UI / UX Design</div>
                 <div class="role">E-commerce</div>
@@ -171,13 +201,13 @@
             </div>
 
             <!-- Call to action -->
-            <div class="cta reveal" data-reveal="up" data-aos="fade-up" data-aos-delay="300">
-              <a class="btn primary" href="#contact">Hire me</a>
-              <a class="btn" href="#projects">See projects</a>
+            <div class="cta reveal" data-reveal="up">
+              <a class="btn primary" href="#contact">Start your project</a>
+              <a class="btn" href="#projects">View my work</a>
             </div>
 
             <!-- Social links -->
-            <div style="margin-top: 26px" class="reveal connect" data-reveal="right" data-aos="fade-up" data-aos-delay="400">
+            <div class="reveal connect connect-row" data-reveal="right">
               <span class="muted">Connect —</span>
               <a href="https://github.com/AntonisRsmn" target="_blank" rel="noopener">GitHub</a>
               ·
@@ -191,28 +221,20 @@
 
           <!-- Side card (availability + skills) -->
           <aside class="side-card reveal" data-reveal="zoom" data-reveal-delay="120">
-            <div style="display: flex; align-items: center; gap: 12px">
-              <div style="flex: 1">
-                <div style="font-weight: 800">Available for freelance</div>
-                <div class="muted" style="font-size: 13px; margin-top: 6px">
-                  Open to remote projects — small businesses & startups
+            <div class="side-card-header">
+              <div class="side-card-header-main">
+                <div class="text-strong">Available for freelance work</div>
+                <div class="muted small-top-muted">
+                  I help startups and small businesses launch high-performing websites.
                 </div>
               </div>
             </div>
 
-            <div style="margin-top: 18px">
-              <div style="font-size: 13px; color: var(--muted); font-weight: 700">
+            <div class="mt-18">
+              <div class="text-label">
                 Skills
               </div>
-              <div
-                style="
-                  display: flex;
-                  flex-wrap: wrap;
-                  gap: 8px;
-                  margin-top: 10px;
-                  justify-content: center;
-                "
-              >
+              <div class="skills-list">
                 <span class="role">HTML</span>
                 <span class="role">CSS</span>
                 <span class="role">JavaScript</span>
@@ -229,7 +251,7 @@
 
       <!-- PROJECTS CAROUSEL -->
       <section id="projects">
-        <h2 class="section-title reveal" data-reveal="left">Selected projects</h2>
+        <h2 class="section-title reveal" data-reveal="left">Selected projects for businesses in Greece</h2>
 
         <!-- Carousel container:
              - carousel-projects (id=carouselProjects) will be populated dynamically via JS
@@ -286,31 +308,52 @@
         </section>
       </section>
 
+      <section id="proof">
+        <h2 class="section-title reveal" data-reveal="left">Proof and trust signals</h2>
+        <div class="proof-grid reveal" data-reveal="up">
+          <article class="proof-card">
+            <h3>Recent client outcomes</h3>
+            <p class="muted">Cleaner UX, faster pages, and clearer calls to action that guide users to contact and checkout actions.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Transparent process</h3>
+            <p class="muted">Scope, timeline, and weekly updates from kickoff to launch so you always know what is happening.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Trusted project types</h3>
+            <div class="proof-chips">
+              <span class="role">Business websites</span>
+              <span class="role">E-commerce builds</span>
+              <span class="role">Service landing pages</span>
+              <span class="role">Portfolio websites</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <!-- ABOUT -->
       <section id="about">
         <h2 class="section-title reveal" data-reveal="left">About</h2>
         <div class="about-grid">
           <div>
             <p class="reveal muted" data-reveal="up">
-              Hi — I’m Antonis. I focus on building accessible, fast, and
-              modern websites for small businesses and creatives. I like clean
-              interfaces, well-structured code, and products that solve real
-              problems.
+              I design and build fast, responsive websites that look great and
+              perform well on Google. I focus on clean UI, strong UX, and
+              results-driven development.
             </p>
 
-            <h3 class="reveal" data-reveal="left" style="margin-top: 18px">What I do</h3>
+            <h3 class="reveal mt-18" data-reveal="left">What I do</h3>
             <ul class="reveal muted" data-reveal="up">
               <li>Custom responsive websites</li>
-              <li>E-commerce solutions</li>
-              <li>Performance & SEO optimizations</li>
-              <li>Design-to-code workflows</li>
+              <li>E-commerce websites that convert</li>
+              <li>Performance and SEO optimization</li>
+              <li>Design to code implementation</li>
             </ul>
 
-            <h3 class="reveal" data-reveal="left" style="margin-top: 18px">Tools</h3>
+            <h3 class="reveal mt-18" data-reveal="left">Tools</h3>
             <div
-              class="reveal"
+              class="reveal tools-list"
               data-reveal="right"
-              style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px"
             >
               <span class="role">VS Code</span>
               <span class="role">Git</span>
@@ -322,15 +365,15 @@
 
           <aside>
             <div class="me-photo reveal" data-reveal="zoom">
-              <img src="Imgs/Rusman.webp" alt="A photo of me" loading="lazy" />
+              <img src="Imgs/Rusman.webp" alt="A photo of Antonios Rusman" loading="lazy" decoding="async" width="360" height="300" />
             </div>
 
-            <div style="margin-top: 14px" class="contact-card reveal" data-reveal="right">
-              <div style="font-weight: 800">Let’s work together</div>
-              <div class="muted" style="margin-top: 8px">
+            <div class="contact-card reveal mt-14" data-reveal="right">
+              <div class="text-strong">Let’s work together</div>
+              <div class="muted mt-8">
                 Send a short message and I’ll respond within 24–48 hours.
               </div>
-              <div style="margin-top: 12px">
+              <div class="mt-12">
                 <a class="btn primary" href="#contact">Contact me</a>
               </div>
             </div>
@@ -341,8 +384,14 @@
       <!-- CONTACT -->
       <section id="contact">
         <h2 class="section-title reveal" data-reveal="left">Contact</h2>
-        <div style="display: grid; grid-template-columns: 1fr 360px; gap: 20px">
+        <div class="contact-layout">
           <div>
+            <p class="muted mt-8">
+              Send a short message with your project goals and timeline. I usually reply within 24-48 hours.
+            </p>
+            <p class="muted trust-line">
+              Typical timeline: 1-4 weeks depending on scope. Serving Athens, all Greece, and remote clients.
+            </p>
             <!-- Contact form (Formspree) -->
             <form action="https://formspree.io/f/xvgorlbp" method="POST">
               <label for="name">Name</label>
@@ -355,22 +404,23 @@
               <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
 
               <!-- honeypot -->
-              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+              <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
 
               <button class="btn primary submit" type="submit">Send message</button>
+              <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
             </form>
           </div>
 
           <aside class="contact-card reveal" data-reveal="right">
-            <div style="font-weight: 800">Contact info</div>
-            <div class="muted" style="margin-top: 8px">
+            <div class="text-strong">Contact info</div>
+            <div class="muted mt-8">
               Email: <a href="mailto:info@rusman.gr">info@rusman.gr</a>
             </div>
-            <div class="muted" style="margin-top: 8px">Location: Athens, Greece</div>
+            <div class="muted mt-8">Location: Athens, Greece</div>
 
-            <div style="margin-top: 12px">
-              <div style="font-weight: 700">Social</div>
-              <div class="muted" style="margin-top: 8px">
+            <div class="mt-12">
+              <div class="text-medium">Social</div>
+              <div class="muted mt-8">
                 <a
                   href="https://github.com/AntonisRsmn"
                   aria-label="Visit my GitHub profile"
@@ -405,8 +455,9 @@
         <div class="container footer-grid">
           <div class="footer-left">
             <div class="brand-small">
-              Antonios <span style="color:var(--accent)">Rusman</span>
+              Antonios <span class="accent-text">Rusman</span>
             </div>
+            <div class="muted small">Building fast, modern websites for businesses in Greece and beyond.</div>
             <div class="muted small">© <span id="year"></span> Antonios Rusman — All rights reserved.</div>
           </div>
 
@@ -456,17 +507,6 @@
 
     <!-- Main site script (deferred) -->
     <script src="script.js" defer></script>
-
-    <!-- AOS (Animate On Scroll) Script -->
-    <script src="https://unpkg.com/aos@2/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100
-      });
-    </script>
 
     <!-- Google Analytics (moved to end for performance) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-606VQRRJ64"></script>

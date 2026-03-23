@@ -78,4 +78,19 @@ Feel free to reuse or adapt this site. License choice (e.g. MIT, CC-BY) depends 
 
 - Integrate performance optimization and SEO best practices
 
+## Social Banner Convention
+
+Use dedicated social preview images for Open Graph and Twitter cards:
+
+- Folder: Imgs/social/
+- Primary image: Imgs/social/og-banner-1200x630.png
+- Recommended size: 1200x630 pixels
+- Preferred format: PNG or JPG
+
+Why this convention helps:
+
+- Consistent previews on LinkedIn, Facebook, WhatsApp, and X
+- Better crop behavior and legibility on social cards
+- Clear and predictable path for future updates
+
 Thank you for visiting my digital portfolio! Looking forward to collaborating or creating something new together. ✨

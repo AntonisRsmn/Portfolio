@@ -29,15 +29,8 @@
 }
 
 /* ------------------------- */
-/* Seasonal classes (Christmas, Halloween) */
-/* Add `season-<name>` to body to change palette. */
-/* Light theme plus season: add `light-theme` class as well. */
+/* Optional Halloween season override classes */
 /* ------------------------- */
-
-/* Removed Christmas-specific palette — use Halloween as primary look.
-   If `season-christmas` is added, it will inherit the site's main (Halloween) palette. */
-body.season-christmas { }
-.light-theme.season-christmas { }
 
 /* HALLOWEEN (dark variant) */
 body.season-halloween {
@@ -69,9 +62,6 @@ body.season-halloween {
   overflow: hidden;
 }
 
-/* Removed Christmas vignette — keep overlays neutral for Halloween look */
-body.season-christmas::before { display: none; }
-
 /* small Halloween particle */
 .h-particle {
   position: absolute;
@@ -82,53 +72,6 @@ body.season-christmas::before { display: none; }
   box-shadow: 0 0 6px rgba(255,140,0,0.2);
   transform: translate3d(0,0,0);
   animation: hfloat linear 6s infinite;
-}
-
-/* CHRISTMAS particle (uses main site particle style) */
-/* Make Christmas particles use Halloween particle styling (no special Christmas particles) */
-.c-particle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,140,0,0.95);
-  box-shadow: 0 0 6px rgba(255,140,0,0.2);
-  transform: translate3d(0,0,0);
-  animation: hfloat linear 6s infinite;
-}
-
-/* Light-theme override: more visible, pulsing particles */
-.light-theme.season-christmas .c-particle {
-  background: var(--c-particle-light);
-  box-shadow: 0 0 10px rgba(243,230,216,0.14), 0 0 20px rgba(47,163,107,0.05);
-  animation: hfloat linear 8s infinite, cpulse 3.6s ease-in-out infinite;
-}
-
-/* light-theme snowflake tint for a warmer festive feel */
-.light-theme.season-christmas .snowflake {
-  background: var(--c-particle-light, rgba(243,230,216,0.10)); /* warm gold tint */
-  box-shadow: 0 0 6px rgba(243,230,216,0.06);
-}
-
-/* CSS variable fallback for JS to read, in case needed */
-:root {
-  --c-particle-light: #D1D5DB;
-}
-
-@keyframes cpulse {
-  0%,100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(209,213,219,0.10)); }
-  50% { opacity: 0.86; filter: drop-shadow(0 0 12px rgba(209,213,219,0.14)); }
-}
-
-/* refined snowflake (Christmas) */
-.snowflake { display: none; }
-
-/* Tweak primary button and accents when in christmas season (use site accent) */
-.light-theme.season-christmas .btn.primary,
-.season-christmas .btn.primary {
-  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.16);
-  background: var(--accent);
-  color: var(--text-strong);
 }
 
 /* Global CTA and brand accent updates */
@@ -187,24 +130,6 @@ body.season-christmas::before { display: none; }
   color: #0b0d0c; /* dark text on light cards */
 }
 
-/* Stronger contrast for the contact card specifically during Christmas */
-body.season-christmas .contact-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 12px 32px rgba(11,13,12,0.30);
-  color: var(--text);
-}
-
-/* Slightly stronger contrast when on light-theme + christmas (keep readable) */
-.light-theme.season-christmas .contact-card {
-  background: rgba(255,255,255,0.94);
-  border: 1px solid rgba(11,13,12,0.08);
-  box-shadow: 0 8px 22px rgba(11,13,12,0.08);
-  color: #0b0d0c;
-}
-
 /* Inputs and textarea card style - dark theme */
 input,
 textarea {
@@ -246,8 +171,8 @@ textarea:focus {
 .light-theme input:focus,
 .light-theme textarea:focus {
   border-color: var(--accent);
-  background: rgba(0, 255, 128, 0.05);
-  box-shadow: 0 0 0 3px rgba(0, 255, 128, 0.15);
+  background: rgba(180, 80, 0, 0.05);
+  box-shadow: 0 0 0 3px rgba(180, 80, 0, 0.15);
 }
 
 /* Dark theme (default) */
@@ -330,16 +255,19 @@ header {
 .brand {
   font-weight: 700;
   letter-spacing: -0.2px;
-  font-size: 1.4rem;
-  color: var(--text);
-}
-
-.brand {
-  font-weight: 700;
-  letter-spacing: -0.2px;
   font-size: 1.4rem; /* Make the brand text bigger */
   padding: 24px 28px; /* Add more padding for visual impact */
   margin-left: -28px;
+  color: var(--text);
+}
+
+.brand-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.accent-text {
+  color: var(--accent);
 }
 .navlinks {
   display: flex;
@@ -444,6 +372,31 @@ header {
   flex-wrap: wrap;
 }
 
+.role-group {
+  margin-top: 22px;
+}
+
+.role-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.connect-row {
+  margin-top: 26px;
+}
+
+.side-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.side-card-header-main {
+  flex: 1;
+}
+
 @media (max-width: 980px) {
   #roles {
     justify-content: flex-start;
@@ -485,8 +438,10 @@ header {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 10px 14px;
+  min-height: 44px;
   border-radius: 10px;
   font-weight: 700;
   background: transparent;
@@ -550,6 +505,16 @@ h2.section-title {
   font-size: 14px;
 }
 
+.project .project-summary {
+  margin-top: 2px;
+}
+
+.project .project-result {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 /* ABOUT */
 .about-grid {
   display: grid;
@@ -580,6 +545,48 @@ h2.section-title {
   position: relative;
   z-index: 1;
 }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+.trust-line {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* PROOF */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.proof-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.proof-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.proof-chips {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hp-field {
+  display: none;
+}
 label {
   display: block;
   font-size: 13px;
@@ -599,6 +606,29 @@ textarea {
   margin-top: 10px;
   position: relative;
   z-index: 10;
+}
+
+.form-status {
+  min-height: 1.4em;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.form-status.success {
+  color: #78e39d;
+}
+
+.form-status.error {
+  color: #ff7f7f;
+}
+
+.light-theme .form-status.success {
+  color: #188041;
+}
+
+.light-theme .form-status.error {
+  color: #b12222;
 }
 
 /* FOOTER */
@@ -643,10 +673,30 @@ footer {
   text-decoration: none;
   transition: color 160ms ease, transform 120ms ease;
   font-weight: 500;
+  position: relative;
+  display: inline-block;
 }
+
+.footer-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
 .footer-nav a:hover {
   color: var(--accent-hover);
   transform: translateY(-1px);
+}
+
+.footer-nav a:hover::after {
+  transform: scaleX(1);
 }
 
 /* Right: social icons */
@@ -674,6 +724,46 @@ footer {
   box-shadow: 0 8px 20px rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.10);
 }
 
+.contact-card .muted a {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-card .muted a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
+.contact-card .muted a:hover::after {
+  transform: scaleX(1);
+}
+
+.connect a {
+  position: relative;
+  display: inline-block;
+}
+
+.connect a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
 /* Hover for elements that use the accent color (brand/name, inline accent text) */
 .intro h1 .name:hover,
 .footer-right a:hover,
@@ -683,6 +773,10 @@ footer {
   color: var(--accent-hover);
   transform: translateY(-1px);
   text-decoration: none;
+}
+
+.connect a:hover::after {
+  transform: scaleX(1);
 }
 
 /* Connect label should not change on hover; links keep their hover. */
@@ -704,55 +798,229 @@ footer {
 @media (max-width: 680px) {
   .site-footer {
     text-align: center;
+    padding-top: 42px;
+    padding-bottom: 0;
   }
   .footer-grid {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 24px;
   }
-  .footer-center { order: 2; }
-  .footer-right { order: 3; align-self: center; }
-  .footer-left { order: 1; }
+  .footer-center {
+    order: 2;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .footer-right {
+    order: 3;
+    align-self: center;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .footer-left {
+    order: 1;
+    max-width: 32ch;
+  }
+
+  .footer-left .brand-small {
+    margin-bottom: 12px;
+  }
+
+  .footer-left .small {
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+
   .footer-nav {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .footer-nav a {
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 4px 0;
+  }
+
+  .footer-right .social {
+    margin-top: 10px;
     justify-content: center;
+    gap: 18px;
+  }
+
+  .footer-right .social-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
   }
 }
 
 /* Small helper */
 .site-footer .small { font-size: 13px; opacity: 0.9; }
 
+/* Accessible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* UTIL */
 .muted {
   color: var(--muted);
+}
+
+.text-strong {
+  font-weight: 800;
+}
+
+.text-medium {
+  font-weight: 700;
+}
+
+.text-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.small-top-muted {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.tools-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.mt-18 {
+  margin-top: 18px;
+}
+
+.mt-14 {
+  margin-top: 14px;
+}
+
+.mt-12 {
+  margin-top: 12px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+/* 404 page */
+.not-found-page main {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.not-found-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.not-found-code {
+  font-size: clamp(56px, 12vw, 116px);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  color: var(--accent);
+}
+
+.not-found-title {
+  margin: 12px 0 0;
+  font-size: clamp(26px, 5vw, 38px);
+}
+
+.not-found-subtitle {
+  margin: 14px auto 0;
+  max-width: 52ch;
+  color: var(--muted);
+}
+
+.not-found-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Responsive */
 @media (max-width: 980px) {
   .hero {
     text-align: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
   .hero-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 36px !important;
     align-items: center !important;
   }
   .intro {
     max-width: 100%;
+  }
+  .intro h1 {
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .intro p.lead {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  .role-group {
+    margin-top: 32px;
+  }
+  .role-list {
+    gap: 14px;
   }
   .roles {
     justify-content: center;
   }
   .cta {
     justify-content: center;
+    margin-top: 30px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .connect-row {
+    margin-top: 34px;
   }
   .connect {
     justify-content: center;
+    line-height: 1.6;
   }
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .proof-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
   .nav {
     padding: 0 12px;
@@ -806,9 +1074,15 @@ footer {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center;
+    margin-top: 8px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 @media (max-width: 560px) {
+  section {
+    padding: 92px 0;
+  }
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -818,6 +1092,35 @@ footer {
   }
   .intro h1 {
     font-size: 28px;
+  }
+  .intro p.lead {
+    margin-top: 22px;
+    font-size: 1.08rem;
+  }
+  .role-group {
+    margin-top: 36px;
+  }
+  .cta {
+    margin-top: 32px;
+    gap: 16px;
+  }
+  .connect-row {
+    margin-top: 36px;
+  }
+  .navlinks a,
+  .footer-nav a,
+  .social-link {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  main.container {
+    padding-top: 104px;
+  }
+
+  .hero {
+    padding-top: 10px;
   }
 }
 
@@ -906,14 +1209,6 @@ header {
 
 .side-card {
   animation: fadeLiftIn 0.7s ease 180ms both, slowFloat 6s ease-in-out 1.2s infinite;
-}
-
-.btn.primary {
-  animation: pulseGlow 3.6s ease-in-out infinite;
-}
-
-.project:hover .project-icon img {
-  transform: scale(1.05) rotate(-1.5deg);
 }
 
 .role {
@@ -1331,7 +1626,8 @@ a:active {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 400px; /* ✅ fixed height for desktop */
+  height: auto;
+  min-height: 430px;
 }
 
 /* Keep the image and text organized */
@@ -1341,17 +1637,37 @@ a:active {
 
 .carousel-projects .project h3 {
   margin-top: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  line-height: 1.25;
+  min-height: 2.5em;
 }
 
-.carousel-projects .project p {
-  flex-grow: 1; /* pushes the button to the bottom */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  line-clamp: 4;
-  -webkit-line-clamp: 4; /* ✅ limit lines of text */
-  -webkit-box-orient: vertical;
+.carousel-projects .project .project-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 0;
+  overflow: visible;
+  text-overflow: clip;
+  display: block;
+}
+
+.carousel-projects .project .project-result {
+  margin: 12px 0 0;
+  color: rgba(255, 238, 230, 0.94);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 0;
+}
+
+.carousel-projects .project .project-result strong {
+  color: var(--text-strong);
+}
+
+.carousel-projects .project .btn.primary {
+  margin-top: 16px;
 }
 
 /* On smaller screens, use a slightly smaller height */
@@ -1361,14 +1677,15 @@ a:active {
     min-height: 360px;
   }
 
-  .carousel-projects .project p {
-    flex-grow: 0;
+  .carousel-projects .project .project-summary {
+    min-height: 0;
     overflow: visible;
     text-overflow: clip;
     display: block;
-    line-clamp: unset;
-    -webkit-line-clamp: unset;
-    -webkit-box-orient: initial;
+  }
+
+  .carousel-projects .project .project-result {
+    min-height: 0;
   }
 }
 

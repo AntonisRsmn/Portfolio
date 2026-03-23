@@ -23,6 +23,66 @@ document.querySelectorAll(".reveal").forEach((el) => {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Submit contact form without redirecting to Formspree page.
+(function initContactForm() {
+  const form = document.querySelector('form[action*="formspree.io"]');
+  if (!form) return;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const statusEl = document.getElementById('form-status');
+  const defaultBtnText = submitBtn ? submitBtn.textContent : '';
+
+  const setStatus = (message, type = '') => {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.remove('success', 'error');
+    if (type) statusEl.classList.add(type);
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+    setStatus('Sending your message...');
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        form.reset();
+        setStatus('Message sent successfully. Thank you! I will get back to you soon.', 'success');
+      } else {
+        let errorMessage = 'Something went wrong. Please try again.';
+        try {
+          const data = await response.json();
+          if (data?.errors?.length) {
+            errorMessage = data.errors.map((err) => err.message).join(' ');
+          }
+        } catch (_err) {
+          // Keep default message when response body is not JSON.
+        }
+        setStatus(errorMessage, 'error');
+      }
+    } catch (_err) {
+      setStatus('Network error. Please check your connection and try again.', 'error');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = defaultBtnText;
+      }
+    }
+  });
+})();
+
 // Mobile nav ARIA
 const navToggle = document.getElementById("nav-toggle");
 const navToggleLabel = document.querySelector(".nav-toggle-label");
@@ -103,14 +163,8 @@ if (cv) {
 // document.querySelector('.social-link[href^="mailto:"]').classList.add('active')
 
 
-/* ----------------------------- */
-/* Seasonal manager: setSeason/clearSeason/toggleSeason
-   - Add `season-<name>` class to <body>
-   - Optionally spawn visual effects per season
-   - Exposed globally for usage from console or other scripts
-*/
+/* Halloween particle manager (used by the hero-title easter egg). */
 (function () {
-  const body = document.body;
   let current = null;
   let overlay = null;
   let spawner = null;
@@ -140,20 +194,12 @@ if (cv) {
     p.style.width = size + 'px';
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
-    const delay = Math.random() * 8000;
     p.style.animationDuration = (4 + Math.random() * 6) + 's';
     p.style.top = (80 + Math.random() * 20) + '%';
     c.appendChild(p);
     setTimeout(() => p.remove(), 11000);
   }
 
-  /* Particle Style */
-  function makeCParticle() {
-    // Christmas particle generator removed — delegate to Halloween particle.
-    makeHParticle();
-  }
-
-  // Start the generic particle effect (uses Halloween-style particles)
   function startParticles() {
     stopEffect();
     const isLight = document.body.classList.contains('light-theme');
@@ -170,7 +216,7 @@ if (cv) {
   function stopEffect() {
     if (spawner) { clearInterval(spawner); spawner = null; }
     if (overlay) {
-      overlay.querySelectorAll('.snowflake, .h-particle, .c-particle').forEach(el => el.remove());
+      overlay.querySelectorAll('.h-particle').forEach(el => el.remove());
     }
     clearOverlay();
   }
@@ -233,54 +279,63 @@ if (cv) {
       icon: "Imgs/ryvex-logo.webp",
       title: "Ryvex",
       desc: "Ryvex is a discord bot built to help you manage your discord server and also the members.",
+      result: "Clearer onboarding and easier server management workflows.",
       link: "https://ryvex.gr",
     },
     {
       icon: "Imgs/betl-logo.webp",
       title: "Betl",
       desc: "Betl provides innovative battery solutions focused on mobile and on-the-go charging.",
+      result: "Stronger product presentation and smoother mobile browsing.",
       link: "https://antonisrsmn.github.io/Betl-Greece/",
     },
     {
       icon: "Imgs/Unlike-Logo-White.webp",
       title: "Unlike",
       desc: "A real-time global chat platform for open, secure, and anonymous communication online.",
+      result: "Improved readability and clearer core product messaging.",
       link: "https://unlike.gr",
     },
     {
       icon: "Imgs/eshop-img.webp",
       title: "E-Shop Template",
       desc: "Modern e-shop template with responsive design and clean code structure.",
+      result: "Better conversion-oriented layout for product discovery.",
       link: "https://antonisrsmn.github.io/Eshop-Template/",
     },
     {
       icon: "Imgs/stefania.webp",
       title: "Στεφανια Δρακου",
       desc: "A clean and modern website designed for a psychology professional, highlighting services.",
+      result: "More trust through clean structure and service clarity.",
       link: "https://stefaniadrakou.gr/",
     },
     {
       icon: "Imgs/weather-app.webp",
       title: "Weather App",
       desc: "Live weather updates with a clean design and accurate real-time data integration.",
+      result: "Faster data scanning with a simple, low-friction UI.",
       link: "https://antonisrsmn.github.io/Weather-App/",
     },
     {
       icon: "Imgs/Calculator.webp",
       title: "Calculator",
       desc: "Clean, minimalist calculator app built for precision, simplicity, and consistent performance.",
+      result: "Reliable interaction flow with straightforward controls.",
       link: "https://antonisrsmn.github.io/Calculator-App/",
     },
     {
       icon: "Imgs/favicon.svg",
       title: "Barber Salon",
       desc: "A modern website showcasing services, pricing, and online booking with an admin page for managing appointments.",
+      result: "Clearer booking journey from service view to appointment request.",
       link: "https://appointments-app-ruuu.onrender.com/",
     },
     {
       icon: "Imgs/favicon-blog.svg",
       title: "Blog",
       desc: "A modern blog sharing insights, ideas, and practical knowledge on technology, lifestyle, and everyday inspiration.",
+      result: "Cleaner reading experience and improved content navigation.",
       link: "https://blog-post-t28l.onrender.com/",
     },
   ];
@@ -297,10 +352,11 @@ if (cv) {
     return `
       <div class="project" aria-hidden="true">
         <div class="project-icon">
-          <img src="${project.icon}" alt="${project.title} Logo" loading="lazy">
+          <img src="${project.icon}" alt="${project.title} Logo" loading="lazy" decoding="async" width="220" height="220">
         </div>
         <h3>${project.title}</h3>
-        <p>${project.desc}</p>
+        <p class="project-summary">${project.desc}</p>
+        <p class="project-result"><strong>Outcome:</strong> ${project.result}</p>
         <a class="btn primary" href="${project.link}" target="_blank" rel="noopener">Website</a>
       </div>
     `;
