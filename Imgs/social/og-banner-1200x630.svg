@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b0711;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a0a0d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a0d0d;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="accentLeft" cx="0%" cy="50%">
+      <stop offset="0%" style="stop-color:#8b6914;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#5a4a0a;stop-opacity:0.2" />
+    </radialGradient>
+    <radialGradient id="accentRight" cx="100%" cy="50%">
+      <stop offset="0%" style="stop-color:#a87d1a;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#6b5012;stop-opacity:0.15" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)" />
+
+  <!-- Decorative accent shapes -->
+  <circle cx="-200" cy="600" r="400" fill="url(#accentLeft)" />
+  <circle cx="1400" cy="80" r="450" fill="url(#accentRight)" />
+
+  <!-- Accent line under name -->
+  <line x1="100" y1="310" x2="900" y2="310" stroke="#ff8c00" stroke-width="4" opacity="0.8" />
+
+  <!-- Main text: Antonios -->
+  <text x="100" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="120" font-weight="700" fill="#ffffff" letter-spacing="-1">
+    Antonios
+  </text>
+
+  <!-- Main text: Rusman (with spacing) -->
+  <text x="630" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="120" font-weight="700" fill="#ff8c00" letter-spacing="-1">
+    Rusman
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="370" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="48" font-weight="400" fill="#c9b59a" letter-spacing="0.8">
+    Web Developer &amp; Designer
+  </text>
+
+  <!-- Domain text -->
+  <text x="100" y="555" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="500" fill="#8a7a6a" letter-spacing="0.3">
+    rusman.gr
+  </text>
+</svg>
