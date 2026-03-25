@@ -31,7 +31,7 @@
   </text>
 
   <!-- Main text: Rusman (with spacing) -->
-  <text x="658" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="120" font-weight="700" fill="#ff8c00" letter-spacing="-1">
+  <text x="628" y="270" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="120" font-weight="700" fill="#ff8c00" letter-spacing="-1">
     Rusman
   </text>
 
