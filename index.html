@@ -38,8 +38,12 @@
       rel="stylesheet"
     />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Preload main stylesheet for faster rendering -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- Removed problematic inlined critical CSS for navbar. Main stylesheet is now primary. -->
 
     <!-- Open Graph / Social metadata -->
     <meta
@@ -541,6 +545,18 @@
     </main>
 
     <!-- Main site script (deferred) -->
+    <!-- Suggestion: Set long cache lifetimes for static assets in your server config (e.g., .htaccess, nginx, or netlify.toml):
+         # Example for Apache .htaccess
+         <IfModule mod_expires.c>
+           ExpiresActive On
+           ExpiresByType image/webp "access plus 1 year"
+           ExpiresByType image/png "access plus 1 year"
+           ExpiresByType image/jpeg "access plus 1 year"
+           ExpiresByType image/svg+xml "access plus 1 year"
+           ExpiresByType text/css "access plus 1 year"
+           ExpiresByType application/javascript "access plus 1 year"
+         </IfModule>
+    -->
     <script src="script.js" defer></script>
 
     <!-- Google Analytics (moved to end for performance) -->
