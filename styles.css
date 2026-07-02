@@ -26,6 +26,7 @@
   --accent-35: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
   --accent-4: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.4);
   --accent-6: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.6);
+  --neon-hover-delay: 0.02s;
   --accent-hover: #ffb86b;
   --accent-active: #ff6d00;
   --accent-glow: rgba(255,140,0,0.24);
@@ -102,6 +103,18 @@ body.season-halloween {
   border-radius: 10px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
+.light-theme .btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  box-shadow: 0 10px 22px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.28);
+}
+.light-theme .btn.primary:hover {
+  background: var(--accent-hover);
+  color: #140a03;
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+  box-shadow: 0 14px 26px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+}
 .brand, .intro h1 .name { color: var(--accent); }
 
 @keyframes hfloat {
@@ -122,6 +135,9 @@ body.season-halloween {
   --text-secondary: #4f3d2c;
   --text-muted: #7d6752;
   --accent: #b44f00;
+  --accent-r: 180;
+  --accent-g: 79;
+  --accent-b: 0;
   --accent-hover: #d57a17;
   --accent-active: #9d3f00;
   --accent-glow: rgba(180,79,0,0.16);
@@ -165,7 +181,7 @@ body.season-halloween {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.35s ease var(--neon-hover-delay), box-shadow 0.35s ease var(--neon-hover-delay);
   box-shadow: var(--shadow-sm);
 }
 
@@ -826,18 +842,19 @@ h2.section-title {
   position: relative;
   z-index: 1;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.35s ease var(--neon-hover-delay), box-shadow 0.35s ease var(--neon-hover-delay);
 }
 
 .project:hover,
+.proof-card:hover,
 .service-card:hover,
 .process-card:hover,
 .testimonial-card:hover,
 .faq-item:hover,
 .trust-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent-18);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7);
+  box-shadow: 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25);
 }
 .project .screenshot,
 .project .screenshot2 {
@@ -1245,6 +1262,27 @@ h2.section-title {
 .light-theme .proof-chips .role {
   border-color: rgba(180, 80, 0, 0.18);
   background: rgba(180, 80, 0, 0.06);
+}
+
+/* Shared delayed neon hover for section cards */
+.proof-card,
+.service-card,
+.process-card,
+.testimonial-card,
+.faq-item,
+.trust-card {
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.35s ease var(--neon-hover-delay), box-shadow 0.35s ease var(--neon-hover-delay);
+}
+
+.proof-card:hover,
+.service-card:hover,
+.process-card:hover,
+.testimonial-card:hover,
+.faq-item:hover,
+.trust-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7);
+  box-shadow: 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25);
 }
 
 .hp-field {
@@ -2125,7 +2163,7 @@ header {
 .contact-chip-list .role:hover::before {
   opacity: 0;
   animation: chipBorderLoad 0.7s ease-out forwards;
-  transition-delay: 0.7s;
+  transition-delay: var(--neon-hover-delay);
 }
 
 .role:hover::after,
@@ -2133,7 +2171,7 @@ header {
 .proof-chips .role:hover::after,
 .contact-chip-list .role:hover::after {
   opacity: 1;
-  transition-delay: 0.7s;
+  transition-delay: var(--neon-hover-delay);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2300,7 +2338,7 @@ header {
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
   padding: 24px 18px;
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 0.4s, border-color 0.35s ease var(--neon-hover-delay), box-shadow 0.35s ease var(--neon-hover-delay);
 }
 
 /* Keep the image and text organized */
@@ -2355,7 +2393,8 @@ header {
 
 .carousel-projects .project:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7);
+  box-shadow: 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25);
 }
 
 .carousel-projects p {
@@ -2434,7 +2473,7 @@ a:active {
 
 /* Base transition for all buttons */
 .btn {
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.35s ease 0.12s, box-shadow 0.35s ease 0.12s;
 }
 
 /* Hover effect for normal buttons */
@@ -2472,6 +2511,8 @@ a:active {
 .carousel-viewport {
   overflow: hidden !important;
   position: relative;
+  padding: 10px;
+  margin: -10px;
 }
 
 .carousel-projects,
@@ -2565,7 +2606,7 @@ a:active {
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
   padding: 24px 18px 32px;
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 0.4s, border-color 0.35s ease var(--neon-hover-delay), box-shadow 0.35s ease var(--neon-hover-delay);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2630,7 +2671,8 @@ a:active {
 
 .carousel-projects .project:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7);
+  box-shadow: 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25);
 }
 
 /* On smaller screens, use a slightly smaller height */
@@ -3156,4 +3198,36 @@ a:active {
   .light-theme .nav-overlay {
     background: rgba(0, 0, 0, 0.2);
   }
+}
+
+/* Final delayed neon hover overrides */
+.proof-card,
+.service-card,
+.process-card,
+.testimonial-card,
+.faq-item,
+.trust-card,
+.project,
+.carousel-projects .project {
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.28s ease var(--neon-hover-delay), box-shadow 0.28s ease var(--neon-hover-delay) !important;
+}
+
+.proof-card:hover,
+.service-card:hover,
+.process-card:hover,
+.testimonial-card:hover,
+.faq-item:hover,
+.trust-card:hover,
+.project:hover,
+.carousel-projects .project:hover {
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25) !important;
+}
+
+.carousel-projects .project:hover {
+  box-shadow: inset 0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.45) !important;
+}
+
+.btn {
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.28s ease var(--neon-hover-delay), box-shadow 0.28s ease var(--neon-hover-delay) !important;
 }
