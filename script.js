@@ -146,7 +146,7 @@ if (navToggle && navToggleLabel) {
 const gh = document.getElementById("github-link");
 if (gh) gh.href = "https://github.com/AntonisRsmn";
 const li = document.getElementById("linkedin-link");
-if (li) li.href = "https://www.linkedin.com/in/antonis-rusman-a46424319/";
+if (li) li.href = "https://www.linkedin.com/in/antonisrusman/";
 const ig = document.getElementById("insta-link");
 if (ig) ig.href = "https://instagram.com/_.rusman._";
 const cv = document.getElementById("resume-link");
