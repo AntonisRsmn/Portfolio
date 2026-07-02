@@ -10,7 +10,7 @@
   --border-strong: rgba(255,255,255,0.18);
   --text-primary: #fdf6ee;
   --text-secondary: #e1c6ac;
-  --text-muted: #d8b79a;
+  --text-muted: #efe0b6;
   --accent: #ff8c00;
   --accent-r: 255;
   --accent-g: 140;
@@ -1022,32 +1022,23 @@ h2.section-title {
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+   color: var(--text-primary);
+ }
+
+ .contact-form-card form {
+   margin-top: 14px;
+   display: grid;
+   gap: 10px;
+ }
+
+ .contact-form-card label {
+   margin-bottom: 2px;
+   color: var(--text-primary);
 }
 
-.contact-form-card form {
-  margin-top: 14px;
-  display: grid;
-  gap: 10px;
-}
-
-.contact-form-card label {
-  margin-bottom: 2px;
-}
-
-.contact-form-card input,
-.contact-form-card textarea {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.01);
-}
-
-.contact-form-card textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.contact-form-card .submit {
-  margin-top: 4px;
-  justify-self: start;
+.contact-form-card > p,
+.contact-form-card .trust-line {
+  color: var(--text-primary);
 }
 
 .contact-info-card {
@@ -1060,9 +1051,12 @@ h2.section-title {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
 }
 
-.contact-info-card .muted,
-.contact-info-card .text-medium {
-  color: var(--muted);
+.contact-info-card .muted {
+   color: var(--muted);
+ }
+
+ .contact-info-card .text-medium {
+   color: var(--text-primary);
 }
 
 .contact-meta {
