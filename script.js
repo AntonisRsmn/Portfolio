@@ -181,20 +181,52 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // Mobile nav ARIA
 const navToggle = document.getElementById("nav-toggle");
 const navToggleLabel = document.querySelector(".nav-toggle-label");
+const navOverlay = document.querySelector(".nav-overlay");
 if (navToggle && navToggleLabel) {
+  const applyNavState = () => {
+    const isOpen = navToggle.checked && window.innerWidth <= 768;
+    navToggleLabel.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    document.body.classList.toggle("nav-open", isOpen);
+  };
+
+  const closeNav = () => {
+    if (!navToggle.checked) return;
+    navToggle.checked = false;
+    applyNavState();
+  };
+
   navToggleLabel.setAttribute("aria-expanded", "false");
-  navToggle.addEventListener("change", () => {
-    navToggleLabel.setAttribute("aria-expanded", navToggle.checked ? "true" : "false");
-  });
+  navToggle.addEventListener("change", applyNavState);
+
+  if (navOverlay) {
+    ["click", "touchstart", "pointerdown"].forEach((eventName) => {
+      navOverlay.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        closeNav();
+      }, { passive: false });
+    });
+  }
 
   document.querySelectorAll(".navlinks a").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 768 && navToggle.checked) {
-        navToggle.checked = false;
-        navToggleLabel.setAttribute("aria-expanded", "false");
+        closeNav();
       }
     });
   });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNav();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && navToggle.checked) {
+      closeNav();
+    }
+    applyNavState();
+  });
+
+  applyNavState();
 }
 
 // THEME: init + sync with slide switch

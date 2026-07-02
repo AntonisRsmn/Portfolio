@@ -3220,12 +3220,19 @@ a:active {
   .nav-overlay {
     display: block;
     position: fixed;
-    inset: 0;
-    background: rgba(4, 5, 7, 0.42);
+    top: 0;
+    left: 0;
+    right: auto;
+    width: calc(100vw - min(80vw, 330px));
+    height: 100dvh;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
-    z-index: 120;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    z-index: 129;
   }
 
   .nav-toggle:checked ~ .nav-overlay {
@@ -3286,7 +3293,13 @@ a:active {
   }
 
   .light-theme .nav-overlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: transparent;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
   }
 }
 
