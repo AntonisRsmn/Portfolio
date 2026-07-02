@@ -2745,7 +2745,7 @@ a:active {
 
 .carousel-projects .project .project-result {
   margin: 12px 0 0;
-  color: rgba(255, 238, 230, 0.94);
+  color: var(--text-secondary);
   font-size: 13px;
   line-height: 1.5;
   min-height: 0;
