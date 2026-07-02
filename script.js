@@ -1,27 +1,113 @@
-// Reveal on scroll
-const obs = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("show");
-        obs.unobserve(e.target);
-      }
-    });
-  },
-  { threshold: 0.08 }
-);
-document.querySelectorAll(".reveal").forEach((el) => {
-  const delay = Number(el.dataset.revealDelay || el.dataset.aosDelay || 0);
-  if (delay > 0) {
-    // Keep scroll animation snappy while still allowing a staggered sequence.
-    el.style.transitionDelay = `${Math.min(delay, 450)}ms`;
-  }
-  obs.observe(el);
-});
+// Reveal on scroll (or instant render for reduced motion users)
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealItems = document.querySelectorAll(".reveal");
+
+if (prefersReducedMotion) {
+  revealItems.forEach((el) => el.classList.add("show"));
+} else {
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("show");
+          obs.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+
+  revealItems.forEach((el) => {
+    const delay = Number(el.dataset.revealDelay || el.dataset.aosDelay || 0);
+    if (delay > 0) {
+      // Keep scroll animation snappy while still allowing a staggered sequence.
+      el.style.transitionDelay = `${Math.min(delay, 450)}ms`;
+    }
+    obs.observe(el);
+  });
+}
 
 // Dynamic year
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Scroll-to-top button
+(function initScrollToTop() {
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+  if (!scrollBtn) return;
+
+  const showAt = 140;
+  const getScrollTop = () => {
+    const doc = document.documentElement;
+    const body = document.body;
+    const se = document.scrollingElement;
+    return Math.max(
+      window.scrollY || 0,
+      window.pageYOffset || 0,
+      (doc && doc.scrollTop) || 0,
+      (body && body.scrollTop) || 0,
+      (se && se.scrollTop) || 0
+    );
+  };
+
+  const toggleScrollBtn = () => {
+    if (getScrollTop() > showAt) scrollBtn.classList.add("show");
+    else scrollBtn.classList.remove("show");
+  };
+
+  window.addEventListener("scroll", toggleScrollBtn, { passive: true });
+  document.addEventListener("scroll", toggleScrollBtn, { passive: true, capture: true });
+  window.addEventListener("resize", toggleScrollBtn, { passive: true });
+  toggleScrollBtn();
+
+  let isScrollAnimating = false;
+  const scrollTargets = [window, document.scrollingElement, document.documentElement, document.body].filter(Boolean);
+
+  scrollBtn.addEventListener("click", () => {
+    if (isScrollAnimating) return;
+
+    const getTop = (target) => {
+      if (target === window) return window.scrollY || window.pageYOffset || 0;
+      return target && typeof target.scrollTop === "number" ? target.scrollTop : 0;
+    };
+
+    const setTop = (target, value) => {
+      if (target === window) {
+        window.scrollTo(0, value);
+        return;
+      }
+      target.scrollTop = value;
+    };
+
+    const uniqueTargets = Array.from(new Set(scrollTargets));
+    const starts = uniqueTargets.map((target) => ({ target, start: getTop(target) })).filter((item) => item.start > 0);
+    if (starts.length === 0) return;
+
+    isScrollAnimating = true;
+    const duration = 550;
+    const startTime = performance.now();
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+
+      starts.forEach(({ target, start }) => {
+        const next = Math.round(start * (1 - eased));
+        setTop(target, next);
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        isScrollAnimating = false;
+      }
+    };
+
+    requestAnimationFrame(tick);
+  });
+})();
 
 // Submit contact form without redirecting to Formspree page.
 (function initContactForm() {
@@ -39,8 +125,17 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     if (type) statusEl.classList.add(type);
   };
 
+  const normalizeField = (field) => {
+    if (!field || typeof field.value !== 'string') return;
+    field.value = field.value.trim();
+  };
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    normalizeField(form.querySelector('#name'));
+    normalizeField(form.querySelector('#email'));
+    normalizeField(form.querySelector('#message'));
 
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -149,13 +244,7 @@ const li = document.getElementById("linkedin-link");
 if (li) li.href = "https://www.linkedin.com/in/antonisrusman/";
 const ig = document.getElementById("insta-link");
 if (ig) ig.href = "https://instagram.com/_.rusman._";
-const cv = document.getElementById("resume-link");
-if (cv) {
-  cv.addEventListener("click", (e) => {
-    e.preventDefault(); // prevent default link behavior
-    window.open("Pdfs/Rusman-CV.pdf", "_blank"); // opens the PDF in a new tab
-  });
-}
+// Resume link is a normal anchor with target="_blank" in HTML; no JS override required.
 
 // Make mail social-link visually prominent by default
 // Previously we auto-added an `.email` accent class; keep the UI neutral by default.
@@ -168,6 +257,7 @@ if (cv) {
   let current = null;
   let overlay = null;
   let spawner = null;
+  window.__particlesEnabled = false;
 
   function createOverlay() {
     if (!overlay) {
@@ -191,11 +281,12 @@ if (cv) {
     const p = document.createElement('div');
     p.className = 'h-particle';
     const size = Math.round(Math.random() * 18 + 6);
+    const duration = (4 + Math.random() * 6).toFixed(2);
     p.style.width = size + 'px';
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (4 + Math.random() * 6) + 's';
     p.style.top = (80 + Math.random() * 20) + '%';
+    p.style.setProperty('animation', `hfloat ${duration}s linear forwards`, 'important');
     c.appendChild(p);
     setTimeout(() => p.remove(), 11000);
   }
@@ -222,14 +313,29 @@ if (cv) {
   }
 
   // Particle controls (simple API)
-  function enableParticles() { if (current) return; startParticles(); current = 'particles'; }
-  function disableParticles() { if (!current) return; stopEffect(); current = null; }
+  function enableParticles() {
+    if (current) return;
+    startParticles();
+    current = 'particles';
+    window.__particlesEnabled = true;
+  }
+  function disableParticles() {
+    if (!current) return;
+    stopEffect();
+    current = null;
+    window.__particlesEnabled = false;
+  }
   function toggleParticles() { if (current) disableParticles(); else enableParticles(); }
 
   // Expose particle API
   window.enableParticles = enableParticles;
   window.disableParticles = disableParticles;
   window.toggleParticles = toggleParticles;
+
+  // Restore ambient Halloween particles by default (except for reduced-motion users).
+  if (!prefersReducedMotion) {
+    enableParticles();
+  }
 
 })();
 
@@ -240,7 +346,7 @@ if (cv) {
 
   let clickCount = 0;
   let resetTimer = null;
-  let particlesEnabled = false; // track current state
+  let particlesEnabled = Boolean(window.__particlesEnabled); // track current state
 
   target.addEventListener("click", () => {
     clickCount++;
@@ -258,10 +364,8 @@ if (cv) {
       if (typeof enableParticles === "function" && typeof disableParticles === "function") {
         if (particlesEnabled) {
           enableParticles();
-          console.log("Particles enabled!");
         } else {
           disableParticles();
-          console.log("Particles disabled!");
         }
       }
     }
@@ -342,7 +446,7 @@ if (cv) {
 
   const carousel = document.getElementById("carouselProjects");
   const carouselSection = document.getElementById("projects-carousel");
-  const AUTOPLAY_MS = 3000;
+  const AUTOPLAY_MS = 3800;
   const TRANSITION_MS = 520;
   let autoplayTimer = null;
   let isAnimating = false;
@@ -463,30 +567,42 @@ if (cv) {
       carouselSection.addEventListener("mouseleave", startAutoplay);
     }
 
-    window.addEventListener("resize", () => {
-      setVisibleCount();
-      applyOffset(false);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAutoplay();
+      else startAutoplay();
     });
 
+    let resizeRaf = null;
+    window.addEventListener("resize", () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = null;
+        setVisibleCount();
+        applyOffset(false);
+      });
+    });
+
+    if (prefersReducedMotion) {
+      stopAutoplay();
+    }
+
     buildCarouselTrack();
-    startAutoplay();
+    if (!prefersReducedMotion) {
+      startAutoplay();
+    }
   });
 
-  // Preload project images
-  (function preloadProjectImages() {
-    const projectImages = [
+  // Hint-fetch only the first viewport-worth of project logos.
+  (function preloadCriticalProjectImages() {
+    const firstSlides = [
       "Imgs/ryvex-logo.webp",
       "Imgs/betl-logo.webp",
       "Imgs/Unlike-Logo-White.webp",
-      "Imgs/eshop-img.webp",
-      "Imgs/stefania.webp",
-      "Imgs/weather-app.webp",
-      "Imgs/Calculator.webp",
-      "Imgs/favicon.svg",
-      "Imgs/favicon-blog.svg",
     ];
-    projectImages.forEach((src) => {
+    firstSlides.forEach((src) => {
       const img = new Image();
+      img.decoding = "async";
+      img.loading = "eager";
       img.src = src;
     });
   })();

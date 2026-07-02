@@ -12,8 +12,9 @@
     <title>Antonios Rusman | Freelance Web Developer in Athens, Greece</title>
     <meta
       name="description"
-      content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups."
+      content="Freelance web developer in Athens building fast, conversion-focused websites for businesses in Greece and remote clients."
     />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="Imgs/favicon.ico" />
@@ -63,6 +64,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Antonios Rusman - Web Developer and Designer" />
     <meta property="og:url" content="https://rusman.gr/" />
+    <meta property="og:locale" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Antonios Rusman - Freelance Web Developer in Athens" />
     <meta name="twitter:description" content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups." />
@@ -109,6 +111,47 @@
               "https://github.com/AntonisRsmn",
               "https://www.linkedin.com/in/antonisrusman/"
             ]
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How long does a project usually take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most projects take between one and four weeks depending on scope, content preparation, and the level of refinement required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you redesign an existing website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Redesign work usually improves structure, messaging, performance, and conversion clarity while preserving core brand identity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you improve SEO and accessibility?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Sites are built with semantic structure, accessible interactions, and on-page SEO best practices so they are easier to find and use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens after launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Post-launch support includes maintenance, updates, and performance improvements so the site continues to perform well over time."
+            }
           }
         ]
       }
@@ -520,7 +563,7 @@
             <div class="me-photo reveal" data-reveal="zoom">
               <picture>
                 <source type="image/webp" srcset="Imgs/IMG_0299.webp">
-                <img src="Imgs/IMG_0299.jpeg" alt="A photo of Antonios Rusman" decoding="async" width="360" height="300" fetchpriority="high">
+                <img src="Imgs/IMG_0299.jpeg" alt="A photo of Antonios Rusman" decoding="async" width="360" height="300" loading="lazy">
               </picture>
             </div>
 
@@ -709,7 +752,24 @@
           </div>
         </div>
       </footer>
+
     </main>
+
+    <a class="mobile-sticky-cta" href="#contact" aria-label="Start your project and contact me">
+      Start your project
+    </a>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      type="button"
+      aria-label="Scroll to top"
+      title="Back to top"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 14L12 8L18 14" />
+      </svg>
+    </button>
 
     <!-- Main site script (deferred) -->
     <!-- Suggestion: Set long cache lifetimes for static assets in your server config (e.g., .htaccess, nginx, or netlify.toml):
