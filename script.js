@@ -286,9 +286,82 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
 
 /* Halloween particle manager (used by the hero-title easter egg). */
 (function () {
+  const PARTICLES_KEY = "particles-enabled";
   let current = null;
   let overlay = null;
   let spawner = null;
+
+  const readStoredValue = (storage, fallback = null) => {
+    if (!storage) return fallback;
+    try {
+      const value = storage.getItem(PARTICLES_KEY);
+      return value === null ? fallback : value;
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  const writeStoredValue = (storage, value) => {
+    if (!storage) return false;
+    try {
+      storage.setItem(PARTICLES_KEY, value);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const readCookieValue = () => {
+    const cookieMatch = document.cookie.split('; ').find((entry) => entry.startsWith(`${PARTICLES_KEY}=`));
+    if (!cookieMatch) return null;
+    return decodeURIComponent(cookieMatch.split('=').slice(1).join('='));
+  };
+
+  const writeCookieValue = (value) => {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() + 1);
+    document.cookie = `${PARTICLES_KEY}=${encodeURIComponent(value)}; path=/; expires=${date.toUTCString()}`;
+  };
+
+  const readSavedParticlesState = () => {
+    const localValue = readStoredValue(window.localStorage, null);
+    if (localValue !== null) return localValue === "true";
+
+    const sessionValue = readStoredValue(window.sessionStorage, null);
+    if (sessionValue !== null) return sessionValue === "true";
+
+    const cookieValue = readCookieValue();
+    if (cookieValue !== null) return cookieValue === "true";
+
+    return false;
+  };
+
+  const saveParticlesState = (enabled) => {
+    const value = String(enabled);
+    if (writeStoredValue(window.localStorage, value)) return;
+    if (writeStoredValue(window.sessionStorage, value)) return;
+    writeCookieValue(value);
+  };
+
+  const setParticleState = (enabled) => {
+    if (enabled) {
+      if (!current) {
+        startParticles();
+        current = 'particles';
+      }
+      window.__particlesEnabled = true;
+      saveParticlesState(true);
+      return;
+    }
+
+    if (current) {
+      stopEffect();
+      current = null;
+    }
+    window.__particlesEnabled = false;
+    saveParticlesState(false);
+  };
+
   window.__particlesEnabled = false;
 
   function createOverlay() {
@@ -305,7 +378,6 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     overlay.remove();
     overlay = null;
   }
-
 
   /* floating orange particles */
   function makeHParticle() {
@@ -329,7 +401,11 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     const initial = isLight ? 20 : 12;
     const interval = isLight ? 300 : 350;
     const twoChance = isLight ? 0.35 : 0.25;
-    for (let i = 0; i < initial; i++) setTimeout(makeHParticle, Math.random() * 1200);
+
+    for (let i = 0; i < initial; i++) {
+      makeHParticle();
+    }
+
     spawner = setInterval(() => {
       const count = Math.random() < twoChance ? 2 : 1;
       for (let i = 0; i < count; i++) makeHParticle();
@@ -344,31 +420,24 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     clearOverlay();
   }
 
-  // Particle controls (simple API)
   function enableParticles() {
-    if (current) return;
-    startParticles();
-    current = 'particles';
-    window.__particlesEnabled = true;
+    setParticleState(true);
   }
-  function disableParticles() {
-    if (!current) return;
-    stopEffect();
-    current = null;
-    window.__particlesEnabled = false;
-  }
-  function toggleParticles() { if (current) disableParticles(); else enableParticles(); }
 
-  // Expose particle API
+  function disableParticles() {
+    setParticleState(false);
+  }
+
+  function toggleParticles() {
+    setParticleState(!window.__particlesEnabled);
+  }
+
   window.enableParticles = enableParticles;
   window.disableParticles = disableParticles;
   window.toggleParticles = toggleParticles;
 
-  // Restore ambient Halloween particles by default (except for reduced-motion users).
-  if (!prefersReducedMotion) {
-    enableParticles();
-  }
-
+  const savedSetting = readSavedParticlesState();
+  setParticleState(savedSetting);
 })();
 
 // Easter egg: toggle particles every 5 clicks on hero title
@@ -378,26 +447,24 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
 
   let clickCount = 0;
   let resetTimer = null;
-  let particlesEnabled = Boolean(window.__particlesEnabled); // track current state
 
   target.addEventListener("click", () => {
     clickCount++;
 
-    // Reset counter if user waits too long
     clearTimeout(resetTimer);
     resetTimer = setTimeout(() => {
       clickCount = 0;
-    }, 2000); // 2s window
+    }, 2000);
 
     if (clickCount === 5) {
       clickCount = 0;
-      particlesEnabled = !particlesEnabled; // toggle state
 
-      if (typeof enableParticles === "function" && typeof disableParticles === "function") {
-        if (particlesEnabled) {
-          enableParticles();
+      if (typeof window.enableParticles === "function" && typeof window.disableParticles === "function") {
+        const nextState = !window.__particlesEnabled;
+        if (nextState) {
+          window.enableParticles();
         } else {
-          disableParticles();
+          window.disableParticles();
         }
       }
     }
@@ -614,13 +681,13 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       });
     });
 
-    if (prefersReducedMotion) {
-      stopAutoplay();
-    }
-
     buildCarouselTrack();
     if (!prefersReducedMotion) {
-      startAutoplay();
+      // Start first move after 1.5 seconds, then continue with normal 3.8s intervals
+      setTimeout(() => {
+        goNext();
+        startAutoplay();
+      }, 1500);
     }
   });
 

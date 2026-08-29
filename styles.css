@@ -125,12 +125,12 @@ body.season-halloween {
 .light-theme {
   --bg: linear-gradient(135deg, #fcfaf7 0%, #f8f1ea 45%, #fdf8f1 100%);
   --bg-secondary: rgba(24,24,24,0.04);
-  --surface: rgba(255,252,247,0.96);
-  --surface-elevated: #fffdfa;
-  --card: #fdf7ef;
-  --card-strong: #ffffff;
-  --border: rgba(63,41,19,0.12);
-  --border-strong: rgba(63,41,19,0.18);
+  --surface: #f4ece4;
+  --surface-elevated: #fdf7f2;
+  --card: #f7f1ea;
+  --card-strong: #fffdfb;
+  --border: rgba(180,79,0,0.22);
+  --border-strong: rgba(180,79,0,0.32);
   --text-primary: #22160e;
   --text-secondary: #4f3d2c;
   --text-muted: #7d6752;
@@ -201,9 +201,9 @@ body.season-halloween {
 .light-theme #about aside,
 .light-theme .not-found-wrap,
 .light-theme .carousel-projects .project {
-  background: linear-gradient(180deg, #fffdfa 0%, #f8efe3 100%);
-  border: 1px solid var(--border);
-  box-shadow: 0 14px 34px rgba(61,39,18,0.1);
+  background: linear-gradient(180deg, #fdf8f2 0%, #f2e8de 100%);
+  border: 1px solid rgba(180,79,0,0.25);
+  box-shadow: 0 14px 34px rgba(61,39,18,0.08);
   color: var(--text-primary);
 }
 
@@ -464,12 +464,17 @@ header {
 
 .light-theme #about .about-grid > div:first-child,
 .light-theme #about aside {
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  border-color: rgba(180, 79, 0, 0.25);
+  box-shadow: 0 10px 22px rgba(61, 39, 18, 0.08);
 }
 
 .light-theme #about .about-grid > div:first-child p.muted {
   color: var(--text-primary);
+}
+
+.light-theme #about .me-photo {
+  border: 1px solid rgba(180, 79, 0, 0.25);
+  box-shadow: 0 10px 22px rgba(61, 39, 18, 0.08);
 }
 
 .scroll-to-top {
@@ -1345,13 +1350,17 @@ h2.section-title {
 }
 
 .light-theme .proof-card {
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(180, 79, 0, 0.22);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
 .light-theme .proof-chips .role {
   border-color: rgba(180, 80, 0, 0.18);
   background: rgba(180, 80, 0, 0.06);
+}
+
+.light-theme .trust-card {
+  border-color: rgba(180, 79, 0, 0.22);
 }
 
 /* Shared delayed neon hover for section cards */
