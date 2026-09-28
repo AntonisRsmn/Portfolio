@@ -493,7 +493,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       link: "https://antonisrsmn.github.io/Betl-Greece/",
     },
     {
-      icon: "Imgs/Unlike-Logo-White.webp",
+      icon: "Imgs/Unlike-Logo.png",
       title: "Unlike",
       desc: "A real-time global chat platform for open, secure, and anonymous communication online.",
       result: "Improved readability and clearer core product messaging.",
@@ -514,7 +514,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       link: "https://stefaniadrakou.gr/",
     },
     {
-      icon: "Imgs/weather-app.webp",
+      icon: "Imgs/weather-app.png",
       title: "Weather App",
       desc: "Live weather updates with a clean design and accurate real-time data integration.",
       result: "Faster data scanning with a simple, low-friction UI.",
@@ -540,6 +540,13 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       desc: "A modern blog sharing insights, ideas, and practical knowledge on technology, lifestyle, and everyday inspiration.",
       result: "Cleaner reading experience and improved content navigation.",
       link: "https://blog-post-t28l.onrender.com/",
+    },
+    {
+      icon: "Imgs/forma.svg",
+      title: "Forma",
+      desc: "A modern file-conversion platform built to securely convert images, audio, and video between multiple formats.",
+      result: "Built a secure and scalable file-conversion platform.",
+      link: "https://forma-gjx2.onrender.com/",
     },
   ];
 
@@ -696,7 +703,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     const firstSlides = [
       "Imgs/ryvex-logo.webp",
       "Imgs/betl-logo.webp",
-      "Imgs/Unlike-Logo-White.webp",
+      "Imgs/Unlike-Logo.png",
     ];
     firstSlides.forEach((src) => {
       const img = new Image();
