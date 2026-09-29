@@ -2483,10 +2483,10 @@ header {
 }
 
 .project-icon img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* keeps image proportions */
-  border-radius: 8px;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
   transition: transform 0.3s ease;
 }
 
@@ -3371,7 +3371,6 @@ a:active {
 }
 
 .btn:hover,
-.carousel-btn:hover,
 .social-link:hover,
 .navlinks a:hover,
 .footer-nav a:hover,
