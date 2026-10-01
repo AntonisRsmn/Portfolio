@@ -109,6 +109,36 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
+// Keep in-page navigation aligned with the section currently in view.
+(function initActiveNavigation() {
+  const links = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
+  const sections = links
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  if (!links.length || !sections.length) return;
+
+  const setActiveLink = (sectionId) => {
+    links.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${sectionId}`;
+      link.toggleAttribute('aria-current', isActive);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const current = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (current) setActiveLink(current.target.id);
+    },
+    { rootMargin: '-25% 0px -60% 0px', threshold: [0.1, 0.4, 0.7] }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+})();
+
 // Submit contact form without redirecting to Formspree page.
 (function initContactForm() {
   const form = document.querySelector('form[action*="formspree.io"]');
@@ -182,9 +212,10 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const navToggle = document.getElementById("nav-toggle");
 const navToggleLabel = document.querySelector(".nav-toggle-label");
 const navOverlay = document.querySelector(".nav-overlay");
+const mobileNavBreakpoint = 800;
 if (navToggle && navToggleLabel) {
   const applyNavState = () => {
-    const isOpen = navToggle.checked && window.innerWidth <= 768;
+    const isOpen = navToggle.checked && window.innerWidth <= mobileNavBreakpoint;
     navToggleLabel.setAttribute("aria-expanded", isOpen ? "true" : "false");
     document.body.classList.toggle("nav-open", isOpen);
   };
@@ -209,7 +240,7 @@ if (navToggle && navToggleLabel) {
 
   document.querySelectorAll(".navlinks a").forEach((link) => {
     link.addEventListener("click", () => {
-      if (window.innerWidth <= 768 && navToggle.checked) {
+      if (window.innerWidth <= mobileNavBreakpoint && navToggle.checked) {
         closeNav();
       }
     });
@@ -220,7 +251,7 @@ if (navToggle && navToggleLabel) {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 768 && navToggle.checked) {
+    if (window.innerWidth > mobileNavBreakpoint && navToggle.checked) {
       closeNav();
     }
     applyNavState();
@@ -390,7 +421,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
     p.style.top = (80 + Math.random() * 20) + '%';
-    p.style.setProperty('animation', `hfloat ${duration}s linear forwards`, 'important');
+    p.style.setProperty('animation', `drift ${duration}s linear forwards`, 'important');
     c.appendChild(p);
     setTimeout(() => p.remove(), 11000);
   }
@@ -474,7 +505,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
 // Carousel functionality
 (function initCarousel() {
   function getVisibleCount() {
-    return window.innerWidth <= 890 ? 1 : 3;
+    return window.innerWidth <= 1024 ? 1 : 3;
   }
 
   const allProjects = [
@@ -497,7 +528,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       title: "Unlike",
       desc: "A real-time global chat platform for open, secure, and anonymous communication online.",
       result: "Improved readability and clearer core product messaging.",
-      link: "https://unlike.gr",
+      link: "https://global-chat-on6n.onrender.com/",
     },
     {
       icon: "Imgs/eshop-img.webp",
@@ -555,20 +586,25 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
   const AUTOPLAY_MS = 3800;
   const TRANSITION_MS = 520;
   let autoplayTimer = null;
+  let animationFallbackTimer = null;
   let isAnimating = false;
   let currentIndex = allProjects.length; // Start in the middle clone block for seamless looping.
 
-  function projectCardMarkup(project) {
+  function projectCardMarkup(project, index) {
+    const isClone = index < allProjects.length || index >= allProjects.length * 2;
+
     return `
-      <div class="project" aria-hidden="true">
-        <div class="project-icon">
-          <img src="${project.icon}" alt="${project.title} Logo" loading="lazy" decoding="async" width="220" height="220">
+      <article class="project"${isClone ? ' aria-hidden="true" inert' : ""}>
+        <div class="project-card">
+          <div class="project-icon">
+            <img src="${project.icon}" alt="${project.title} Logo" loading="lazy" decoding="async" width="220" height="220">
+          </div>
+          <h3>${project.title}</h3>
+          <p class="project-summary">${project.desc}</p>
+          <p class="project-result"><strong>Outcome:</strong> ${project.result}</p>
+          <a class="btn primary" href="${project.link}" target="_blank" rel="noopener">Website</a>
         </div>
-        <h3>${project.title}</h3>
-        <p class="project-summary">${project.desc}</p>
-        <p class="project-result"><strong>Outcome:</strong> ${project.result}</p>
-        <a class="btn primary" href="${project.link}" target="_blank" rel="noopener">Website</a>
-      </div>
+      </article>
     `;
   }
 
@@ -599,12 +635,42 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     }
   }
 
+  function updateVisibleProjectInteractivity() {
+    if (!carousel) return;
+
+    const visibleCount = getVisibleCount();
+    carousel.querySelectorAll(".project").forEach((project, index) => {
+      const isVisible = index >= currentIndex && index < currentIndex + visibleCount;
+      project.toggleAttribute("inert", !isVisible);
+      project.setAttribute("aria-hidden", String(!isVisible));
+    });
+  }
+
   function buildCarouselTrack() {
     if (!carousel) return;
     const loopedProjects = [...allProjects, ...allProjects, ...allProjects];
     carousel.innerHTML = loopedProjects.map(projectCardMarkup).join("");
     setVisibleCount();
     applyOffset(false);
+    updateVisibleProjectInteractivity();
+  }
+
+  function settleCarousel() {
+    if (animationFallbackTimer) {
+      clearTimeout(animationFallbackTimer);
+      animationFallbackTimer = null;
+    }
+
+    const blockSize = allProjects.length;
+    if (currentIndex >= blockSize * 2) {
+      currentIndex -= blockSize;
+      applyOffset(false);
+    } else if (currentIndex < blockSize) {
+      currentIndex += blockSize;
+      applyOffset(false);
+    }
+    updateVisibleProjectInteractivity();
+    isAnimating = false;
   }
 
   function move(direction) {
@@ -612,6 +678,8 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
     isAnimating = true;
     currentIndex += direction;
     applyOffset(true);
+    updateVisibleProjectInteractivity();
+    animationFallbackTimer = setTimeout(settleCarousel, TRANSITION_MS + 100);
   }
 
   function goNext() {
@@ -640,17 +708,14 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
 
     if (carousel) {
       carousel.addEventListener("transitionend", (event) => {
-        if (event.propertyName !== "transform") return;
+        if (event.target !== carousel || event.propertyName !== "transform") return;
+        settleCarousel();
+      });
 
-        const blockSize = allProjects.length;
-        if (currentIndex >= blockSize * 2) {
-          currentIndex -= blockSize;
-          applyOffset(false);
-        } else if (currentIndex < blockSize) {
-          currentIndex += blockSize;
-          applyOffset(false);
+      carousel.addEventListener("transitioncancel", (event) => {
+        if (event.target === carousel && event.propertyName === "transform") {
+          settleCarousel();
         }
-        isAnimating = false;
       });
     }
 
@@ -683,8 +748,14 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
       if (resizeRaf) cancelAnimationFrame(resizeRaf);
       resizeRaf = requestAnimationFrame(() => {
         resizeRaf = null;
+        if (animationFallbackTimer) {
+          clearTimeout(animationFallbackTimer);
+          animationFallbackTimer = null;
+        }
+        isAnimating = false;
         setVisibleCount();
         applyOffset(false);
+        updateVisibleProjectInteractivity();
       });
     });
 

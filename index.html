@@ -9,28 +9,39 @@
     <link rel="dns-prefetch" href="https://formspree.io" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     
-    <title>Antonios Rusman | Freelance Web Developer in Athens, Greece</title>
+    <title>Freelance Web Developer in Athens | Antonios Rusman</title>
     <meta
       name="description"
-      content="Freelance web developer in Athens building fast, conversion-focused websites for businesses in Greece and remote clients."
+      content="Antonios Rusman is a freelance web developer in Athens creating fast, SEO-ready websites, landing pages, and e-commerce experiences for businesses in Greece and remotely."
     />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="Antonios Rusman" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="Imgs/favicon.ico" />
     <link rel="shortcut icon" href="Imgs/favicon.ico" />
+    <link rel="apple-touch-icon" href="Imgs/favicon-ar.png" />
 
     <!-- Organization Logo for Google Search -->
-    <script type="application/ld+json"> 
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://rusman.gr/#organization",
+      "name": "Antonios Rusman Web Development",
       "url": "https://rusman.gr",
-      "logo": "https://rusman.gr/Imgs/favicon-ar.png"
+      "logo": "https://rusman.gr/Imgs/favicon-ar.png",
+      "email": "info@rusman.gr",
+      "sameAs": [
+        "https://github.com/AntonisRsmn",
+        "https://www.linkedin.com/in/antonisrusman/",
+        "https://instagram.com/_.rusman._"
+      ]
     }
     </script>
 
-    <!-- Fonts (Inter) - Preconnect before stylesheet for optimal loading -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,24 +49,18 @@
       rel="stylesheet"
     />
 
-    <link rel="preload" as="image" href="Imgs/IMG_0299.webp" type="image/webp">
-
-    <!-- Preload main stylesheet for faster rendering -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-
-    <!-- Removed problematic inlined critical CSS for navbar. Main stylesheet is now primary. -->
+    <link rel="stylesheet" href="styles.css" />
 
     <!-- Open Graph / Social metadata -->
     <meta
       property="og:title"
-      content="Antonios Rusman - Freelance Web Developer in Athens"
+      content="Freelance Web Developer in Athens | Antonios Rusman"
     />
     <meta
       property="og:description"
-      content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups."
+      content="Fast, SEO-ready websites, landing pages, and e-commerce experiences for businesses in Greece and remotely."
     />
-    <meta property="og:site_name" content="rusman.gr" />
+    <meta property="og:site_name" content="Antonios Rusman Web Development" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png?v=2" />
     <meta property="og:image:secure_url" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png?v=2" />
@@ -66,8 +71,8 @@
     <meta property="og:url" content="https://rusman.gr/" />
     <meta property="og:locale" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Antonios Rusman - Freelance Web Developer in Athens" />
-    <meta name="twitter:description" content="Freelance web developer and designer in Athens, Greece. I build fast, modern, SEO-friendly websites for businesses and startups." />
+    <meta name="twitter:title" content="Freelance Web Developer in Athens | Antonios Rusman" />
+    <meta name="twitter:description" content="Fast, SEO-ready websites, landing pages, and e-commerce experiences for businesses in Greece and remotely." />
     <meta name="twitter:image" content="https://rusman.gr/Imgs/social/og-banner-1200x630.png?v=2" />
     <meta name="twitter:image:alt" content="Antonios Rusman - Web Developer and Designer" />
 
@@ -80,7 +85,18 @@
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "WebSite",
+            "@id": "https://rusman.gr/#website",
+            "url": "https://rusman.gr/",
+            "name": "Antonios Rusman Web Development",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://rusman.gr/#organization"
+            }
+          },
+          {
             "@type": "Person",
+            "@id": "https://rusman.gr/#antonios-rusman",
             "name": "Antonios Rusman",
             "url": "https://rusman.gr",
             "sameAs": [
@@ -97,10 +113,34 @@
           },
           {
             "@type": "ProfessionalService",
+            "@id": "https://rusman.gr/#professional-service",
             "name": "Antonios Rusman Web Development",
             "url": "https://rusman.gr",
             "image": "https://rusman.gr/Imgs/social/og-banner-1200x630.png",
-            "areaServed": ["Athens", "Greece", "Remote"],
+            "logo": "https://rusman.gr/Imgs/favicon-ar.png",
+            "description": "Freelance web development for businesses in Athens, Greece, and remote clients, including business websites, landing pages, e-commerce, SEO, and performance optimization.",
+            "email": "info@rusman.gr",
+            "parentOrganization": {
+              "@id": "https://rusman.gr/#organization"
+            },
+            "founder": {
+              "@id": "https://rusman.gr/#antonios-rusman"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Athens",
+              "addressCountry": "GR"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Athens"
+              },
+              {
+                "@type": "Country",
+                "name": "Greece"
+              }
+            ],
             "serviceType": [
               "Website Development",
               "UI/UX Design",
@@ -159,6 +199,8 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Header / Navigation -->
     <header>
       <div class="container nav">
@@ -171,7 +213,7 @@
 
         <!-- Mobile nav toggle -->
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="nav-toggle-label">
+        <label for="nav-toggle" class="nav-toggle-label" aria-controls="primary-navigation" aria-expanded="false">
           <!-- Modern SVG hamburger icon -->
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <rect y="7" width="32" height="3.5" rx="1.75" fill="#fff" />
@@ -181,8 +223,12 @@
         </label>
 
         <!-- Primary navigation links -->
-        <nav class="navlinks">
-          <label for="nav-toggle" class="nav-close" aria-label="Close menu">&times;</label>
+        <nav class="navlinks" id="primary-navigation" aria-label="Primary navigation">
+          <label for="nav-toggle" class="nav-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 7 17 17M17 7 7 17" />
+            </svg>
+          </label>
 
           <a href="#services">Services</a>
           <a href="#projects">Projects</a>
@@ -281,67 +327,54 @@
             </div>
           </div>
 
-          <!-- Side card (availability + skills) -->
-          <aside class="side-card reveal" data-reveal="zoom" data-reveal-delay="120">
-            <div class="side-card-header">
-              <div class="side-card-header-main">
-                <div class="text-strong">Available for your next launch</div>
-                <div class="muted small-top-muted">
-                  From strategy to SEO, I build websites that look sharp and feel trustworthy from the first click.
-                </div>
+          <aside class="side-card website-blueprint reveal" data-reveal="zoom" data-reveal-delay="120">
+            <div class="blueprint-topline">
+              <span>Website blueprint / 01</span>
+              <span class="blueprint-status">Available</span>
+            </div>
+            <div class="blueprint-screen">
+              <p class="blueprint-label">A better digital storefront</p>
+              <p class="blueprint-title">Built around the next click.</p>
+              <p class="blueprint-copy">Strategy, design, development, and SEO working as one clear customer journey.</p>
+              <div class="blueprint-tags" aria-label="Website services">
+                <span>Strategy</span>
+                <span>Design</span>
+                <span>Build</span>
               </div>
             </div>
-
-            <div class="mt-18">
-              <div class="text-label">
-                What I deliver
-              </div>
-              <div class="skills-list">
-                <span class="role">Strategy</span>
-                <span class="role">UI / UX</span>
-                <span class="role">Development</span>
-                <span class="role">SEO</span>
-                <span class="role">Performance</span>
-                <span class="role">Accessibility</span>
-              </div>
-            </div>
-
-            <div class="mt-18">
-              <div class="text-label">Working style</div>
-              <ul class="side-card-list">
-                <li>Fast, clear communication</li>
-                <li>Mobile-first and accessible builds</li>
-                <li>Thoughtful handoff and support</li>
-              </ul>
+            <div class="blueprint-metrics">
+              <div><strong>01</strong><span>clear story</span></div>
+              <div><strong>02</strong><span>easy action</span></div>
+              <div><strong>03</strong><span>built to grow</span></div>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="trust-strip reveal" data-reveal="up" aria-label="Key trust metrics">
+      <section class="trust-strip reveal" data-reveal="up" aria-label="Working principles">
         <div class="trust-card">
-          <strong>15+</strong>
-          <span>Projects launched</span>
+          <strong>Clear scope</strong>
+          <span>Focused plans before the build begins</span>
         </div>
         <div class="trust-card">
-          <strong>24h</strong>
-          <span>Typical response</span>
+          <strong>Direct contact</strong>
+          <span>Clear communication throughout the project</span>
         </div>
         <div class="trust-card">
-          <strong>100%</strong>
-          <span>Mobile-friendly</span>
+          <strong>Mobile-first</strong>
+          <span>Designed to work naturally on every screen</span>
         </div>
         <div class="trust-card">
-          <strong>SEO</strong>
-          <span>Built in from day one</span>
+          <strong>Built to last</strong>
+          <span>Accessible, maintainable, and SEO-aware foundations</span>
         </div>
       </section>
 
       <section id="services" class="services-section">
         <div class="section-heading reveal" data-reveal="up">
           <p class="section-kicker">Services</p>
-          <h2 class="section-title">Support for every stage of your online presence</h2>
-          <p class="section-copy">I help businesses move from a basic web presence to a professional, high-performing platform that feels as credible as the service they offer.</p>
+          <h2 class="section-title">A website should do more than look polished</h2>
+          <p class="section-copy">Every decision is shaped around clarity, trust, and the actions you want visitors to take next.</p>
         </div>
         <div class="services-grid">
           <article class="service-card reveal" data-reveal="up">
@@ -379,7 +412,11 @@
 
       <!-- PROJECTS CAROUSEL -->
       <section id="projects">
-        <h2 class="section-title reveal" data-reveal="left">Selected projects for businesses in Greece</h2>
+        <div class="section-heading reveal" data-reveal="up">
+          <p class="section-kicker">Selected work</p>
+          <h2 class="section-title">Digital storefronts built to be remembered</h2>
+          <p class="section-copy">A selection of websites, platforms, and products designed to make the next step feel obvious.</p>
+        </div>
 
         <!-- Carousel container:
              - carousel-projects (id=carouselProjects) will be populated dynamically via JS
@@ -489,36 +526,27 @@
         </div>
       </section>
 
-      <section id="testimonials" class="testimonials-section">
+      <section id="approach" class="approach-section">
         <div class="section-heading reveal" data-reveal="up">
-          <p class="section-kicker">Testimonials</p>
-          <h2 class="section-title">Trusted by founders and small businesses who wanted a stronger online presence</h2>
-          <p class="section-copy">The focus is always on clarity, speed, and making the website feel as professional as the business behind it.</p>
+          <p class="section-kicker">Working together</p>
+          <h2 class="section-title">A practical partnership from first brief to launch</h2>
+          <p class="section-copy">The work stays focused on the decisions that help your visitors understand, trust, and contact your business.</p>
         </div>
-        <div class="testimonials-grid">
-          <article class="testimonial-card reveal" data-reveal="up">
-            <div class="testimonial-stars" aria-label="Five star review">★★★★★</div>
-            <p>“The whole experience felt thoughtful and professional. The site now feels much more trustworthy and easier for clients to understand.”</p>
-            <div class="testimonial-author">
-              <strong>Maria V.</strong>
-              <span>Founder, Local Services Brand</span>
-            </div>
+        <div class="approach-grid">
+          <article class="approach-item reveal" data-reveal="up">
+            <span>01</span>
+            <h3>Clarity before decoration</h3>
+            <p>We start with the message, structure, and customer journey so every visual decision has a purpose.</p>
           </article>
-          <article class="testimonial-card reveal" data-reveal="up" data-reveal-delay="80">
-            <div class="testimonial-stars" aria-label="Five star review">★★★★★</div>
-            <p>“The new site gave us a stronger first impression and made it much easier for people to get in touch.”</p>
-            <div class="testimonial-author">
-              <strong>Nikos P.</strong>
-              <span>Director, Small Business</span>
-            </div>
+          <article class="approach-item reveal" data-reveal="up" data-reveal-delay="80">
+            <span>02</span>
+            <h3>Details that earn trust</h3>
+            <p>Readable content, consistent interactions, and fast pages make the experience feel considered from the first visit.</p>
           </article>
-          <article class="testimonial-card reveal" data-reveal="up" data-reveal-delay="120">
-            <div class="testimonial-stars" aria-label="Five star review">★★★★★</div>
-            <p>“Everything felt polished, clear, and genuinely tailored to our needs rather than a generic template.”</p>
-            <div class="testimonial-author">
-              <strong>Eleni K.</strong>
-              <span>Creative Consultant</span>
-            </div>
+          <article class="approach-item reveal" data-reveal="up" data-reveal-delay="120">
+            <span>03</span>
+            <h3>A site you can build on</h3>
+            <p>The final result is structured to stay useful as your business, content, and next ideas grow.</p>
           </article>
         </div>
       </section>
@@ -762,7 +790,6 @@
       class="scroll-to-top"
       type="button"
       aria-label="Scroll to top"
-      title="Back to top"
     >
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M6 14L12 8L18 14" />

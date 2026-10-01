@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Terms of Service | Antonios Rusman</title>
-    <meta name="description" content="Terms of Service for the portfolio and services of Antonios Rusman." />
+    <title>Terms of Service | Antonios Rusman Web Development</title>
+    <meta name="description" content="Terms of Service for Antonios Rusman Web Development and portfolio website inquiries." />
+    <meta name="robots" content="noindex,follow" />
     <link rel="icon" type="image/x-icon" href="Imgs/favicon.ico" />
     <link rel="canonical" href="https://rusman.gr/terms-of-service.html" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="legal-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header>
@@ -19,7 +20,7 @@
         </div>
 
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">
+        <label for="nav-toggle" class="nav-toggle-label" aria-controls="primary-navigation" aria-expanded="false">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <rect y="7" width="32" height="3.5" rx="1.75" fill="#fff" />
             <rect y="14" width="32" height="3.5" rx="1.75" fill="#fff" />
@@ -27,8 +28,12 @@
           </svg>
         </label>
 
-        <nav class="navlinks">
-          <label for="nav-toggle" class="nav-close" aria-label="Close menu">&times;</label>
+        <nav class="navlinks" id="primary-navigation" aria-label="Primary navigation">
+          <label for="nav-toggle" class="nav-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 7 17 17M17 7 7 17" />
+            </svg>
+          </label>
 
           <a href="/#services">Services</a>
           <a href="/#projects">Projects</a>
@@ -77,7 +82,7 @@
 
     <main class="container" id="main-content">
       <section class="contact-card reveal show" data-reveal="up">
-        <div class="section-heading">Terms of Service</div>
+        <h1 class="section-heading">Terms of Service</h1>
         <p class="muted">Last updated: July 2026</p>
 
         <div class="legal-section">
