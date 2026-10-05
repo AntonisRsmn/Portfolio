@@ -314,6 +314,172 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
 // To highlight the email icon programmatically, add the `active` class to the element:
 // document.querySelector('.social-link[href^="mailto:"]').classList.add('active')
 
+// Cookie consent and optional analytics
+(function initCookieConsent() {
+  const CONSENT_KEY = "cookie-consent";
+  const ANALYTICS_ID = "G-606VQRRJ64";
+  let analyticsLoaded = false;
+  let lastFocusedElement = null;
+
+  const readConsent = () => {
+    try {
+      const saved = localStorage.getItem(CONSENT_KEY);
+      if (!saved) return null;
+
+      const consent = JSON.parse(saved);
+      return typeof consent.analytics === "boolean" ? consent : null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const saveConsent = (analytics) => {
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics }));
+    } catch (error) {
+      // If storage is unavailable, the selection applies for this page visit.
+    }
+  };
+
+  const removeAnalyticsCookies = () => {
+    const names = document.cookie
+      .split(";")
+      .map((entry) => entry.trim().split("=")[0])
+      .filter((name) => name === "_ga" || name.startsWith("_ga_"));
+    const isIpAddress = /^(?:\d{1,3}\.){3}\d{1,3}$/.test(location.hostname);
+
+    names.forEach((name) => {
+      const expiredCookie = `${name}=; path=/; max-age=0; SameSite=Lax`;
+      document.cookie = expiredCookie;
+      if (location.hostname && location.hostname !== "localhost" && !isIpAddress) {
+        document.cookie = `${expiredCookie}; domain=${location.hostname}`;
+      }
+    });
+  };
+
+  const loadAnalytics = () => {
+    if (analyticsLoaded) return;
+    analyticsLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", ANALYTICS_ID);
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`;
+    document.head.appendChild(script);
+  };
+
+  const applyConsent = (analytics) => {
+    if (analytics) loadAnalytics();
+    else removeAnalyticsCookies();
+  };
+
+  const consent = readConsent();
+  const banner = document.createElement("aside");
+  banner.className = "cookie-consent";
+  banner.setAttribute("aria-labelledby", "cookie-consent-title");
+  banner.innerHTML = `
+    <h2 id="cookie-consent-title">Your privacy choices</h2>
+    <p>We use essential browser storage for your settings. With your permission, we also use analytics to understand site use. <a href="cookie-policy.html">Read the Cookie Policy</a>.</p>
+    <div class="cookie-consent-actions">
+      <button class="btn" type="button" data-cookie-reject>Reject analytics</button>
+      <button class="btn primary" type="button" data-cookie-accept>Accept analytics</button>
+      <button class="btn" type="button" data-cookie-manage>Manage preferences</button>
+    </div>
+  `;
+
+  const preferences = document.createElement("div");
+  preferences.className = "cookie-preferences";
+  preferences.hidden = true;
+  preferences.setAttribute("role", "dialog");
+  preferences.setAttribute("aria-modal", "true");
+  preferences.setAttribute("aria-labelledby", "cookie-preferences-title");
+  preferences.innerHTML = `
+    <div class="cookie-preferences-panel">
+      <h2 id="cookie-preferences-title">Cookie preferences</h2>
+      <p>Essential settings are always enabled so the website can remember your choices.</p>
+      <div class="cookie-category">
+        <div>
+          <h3>Essential preferences</h3>
+          <p>Stores your cookie choice, color theme, and enabled visual effects.</p>
+        </div>
+        <strong class="cookie-toggle">Always on</strong>
+      </div>
+      <div class="cookie-category">
+        <div>
+          <h3>Analytics</h3>
+          <p>Allows Google Analytics to measure anonymous website usage.</p>
+        </div>
+        <label class="cookie-toggle">
+          <input id="cookie-analytics" type="checkbox" />
+          Allow
+        </label>
+      </div>
+      <div class="cookie-preferences-actions">
+        <button class="btn" type="button" data-cookie-close>Cancel</button>
+        <button class="btn primary" type="button" data-cookie-save>Save preferences</button>
+      </div>
+    </div>
+  `;
+
+  document.body.append(banner, preferences);
+
+  const analyticsInput = preferences.querySelector("#cookie-analytics");
+  const openPreferences = (trigger) => {
+    lastFocusedElement = trigger || document.activeElement;
+    analyticsInput.checked = Boolean((readConsent() || {}).analytics);
+    preferences.hidden = false;
+    document.body.classList.add("cookie-preferences-open");
+    analyticsInput.focus();
+  };
+
+  const closePreferences = () => {
+    preferences.hidden = true;
+    document.body.classList.remove("cookie-preferences-open");
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+  };
+
+  const savePreferences = (analytics) => {
+    saveConsent(analytics);
+    applyConsent(analytics);
+    banner.hidden = true;
+    closePreferences();
+  };
+
+  banner.querySelector("[data-cookie-accept]").addEventListener("click", () => savePreferences(true));
+  banner.querySelector("[data-cookie-reject]").addEventListener("click", () => savePreferences(false));
+  banner.querySelector("[data-cookie-manage]").addEventListener("click", (event) => openPreferences(event.currentTarget));
+  preferences.querySelector("[data-cookie-save]").addEventListener("click", () => savePreferences(analyticsInput.checked));
+  preferences.querySelector("[data-cookie-close]").addEventListener("click", closePreferences);
+
+  document.querySelectorAll("[data-cookie-preferences]").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      if (trigger instanceof HTMLAnchorElement) event.preventDefault();
+      openPreferences(trigger);
+    });
+  });
+
+  preferences.addEventListener("click", (event) => {
+    if (event.target === preferences) closePreferences();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !preferences.hidden) closePreferences();
+  });
+
+  if (consent) {
+    banner.hidden = true;
+    applyConsent(consent.analytics);
+  }
+})();
+
 
 /* Halloween particle manager (used by the hero-title easter egg). */
 (function () {
