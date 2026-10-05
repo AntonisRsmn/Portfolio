@@ -57,6 +57,10 @@ Host the site using:
 
  - GitHub Pages
 
+### Clean URLs on GitHub Pages
+
+Pages that need clean URLs use a directory with an `index.html` file. For example, `cookie-policy/index.html` is published at `/cookie-policy/`. Add future static pages using the same structure rather than linking to standalone `.html` files.
+
 📄 License
 
 Feel free to reuse or adapt this site. License choice (e.g. MIT, CC-BY) depends on intended sharing preferences.

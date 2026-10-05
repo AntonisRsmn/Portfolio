@@ -29,8 +29,10 @@
 # Redirect to HTTPS (if SSL is enabled)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 </IfModule>
 
 # CDN usage: (add your CDN URL if using one)

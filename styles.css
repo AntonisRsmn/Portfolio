@@ -331,8 +331,8 @@ header {
   top: 5px;
   left: 5px;
   display: grid;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   place-items: center;
   border-radius: 50%;
   background: var(--accent);
@@ -1416,6 +1416,21 @@ textarea:focus {
   border-top: 1px solid var(--border);
 }
 
+.legal-page .site-footer {
+  position: relative;
+  border-top: 0;
+}
+
+.legal-page .site-footer::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(calc(100% - 48px), var(--content));
+  border-top: 1px solid var(--border);
+  content: "";
+  transform: translateX(-50%);
+}
+
 .footer-grid {
   position: relative;
   display: grid;
@@ -1449,6 +1464,15 @@ textarea:focus {
   margin-bottom: var(--space-2);
   font-family: var(--font-display);
   font-weight: 700;
+}
+
+.footer-brand-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer-brand-link::after {
+  content: none !important;
 }
 
 .footer-description {
@@ -1605,8 +1629,8 @@ textarea:focus {
 }
 
 .scroll-to-top svg {
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -1686,7 +1710,7 @@ body:not(.light-theme) .scroll-to-top:focus-visible {
 
 .h-particle {
   position: absolute;
-  width: 8px;
+  width: 7px;
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
@@ -1876,6 +1900,56 @@ body.cookie-preferences-open {
   align-self: center;
 }
 
+label.cookie-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cookie-toggle input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface-raised);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.cookie-toggle input::after {
+  width: 7px;
+  height: 4px;
+  border: solid #241003;
+  border-width: 0 0 2px 2px;
+  content: "";
+  opacity: 0;
+  transform: rotate(-45deg) translate(1px, -1px);
+  transition: opacity var(--transition);
+}
+
+.cookie-toggle input:checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.cookie-toggle input:checked::after {
+  opacity: 1;
+}
+
+.cookie-toggle input:focus-visible {
+  outline: 3px solid rgba(var(--accent-rgb), 0.45);
+  outline-offset: 3px;
+}
+
 @media (max-width: 520px) {
   .cookie-consent {
     width: calc(100% - 24px);
@@ -1891,8 +1965,38 @@ body.cookie-preferences-open {
   font-weight: 700;
 }
 
+.cookie-preferences-button {
+  gap: var(--space-2);
+  padding: 11px 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-active));
+  box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.22);
+}
+
+.cookie-preferences-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.cookie-preferences-button:hover,
+.cookie-preferences-button:focus-visible {
+  box-shadow: 0 14px 28px rgba(var(--accent-rgb), 0.3);
+}
+
+.cookie-preferences-section p {
+  margin-bottom: var(--space-4);
+}
+
 @media (max-width: 1024px) {
   .container {
+    width: min(calc(100% - 40px), var(--content));
+  }
+
+  .legal-page .site-footer::before {
     width: min(calc(100% - 40px), var(--content));
   }
 
@@ -2148,6 +2252,10 @@ body.cookie-preferences-open {
   }
 
   .container {
+    width: min(calc(100% - 64px), var(--content));
+  }
+
+  .legal-page .site-footer::before {
     width: min(calc(100% - 64px), var(--content));
   }
 

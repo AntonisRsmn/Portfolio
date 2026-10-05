@@ -385,7 +385,7 @@ if (ig) ig.href = "https://instagram.com/_.rusman._";
   banner.setAttribute("aria-labelledby", "cookie-consent-title");
   banner.innerHTML = `
     <h2 id="cookie-consent-title">Your privacy choices</h2>
-    <p>We use essential browser storage for your settings. With your permission, we also use analytics to understand site use. <a href="cookie-policy.html">Read the Cookie Policy</a>.</p>
+    <p>We use essential browser storage for your settings. With your permission, we also use analytics to understand site use. <a href="/cookie-policy/">Read the Cookie Policy</a>.</p>
     <div class="cookie-consent-actions">
       <button class="btn" type="button" data-cookie-reject>Reject analytics</button>
       <button class="btn primary" type="button" data-cookie-accept>Accept analytics</button>
